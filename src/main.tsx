@@ -29,7 +29,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </h1>
 <div className="hero-bottom">
 <div>
-<p>I use SQL, Python, and Excel to prepare and validate data,<br className="desktop"/> investigate business questions, and automate recurring workflows.</p>
+<p>I transform and analyze data, solve business problems,<br className="desktop"/> and automate workflows.</p>
 <div className="actions">
 <a className="button dark" href="#work">See my work <span>↗</span>
 </a>
@@ -61,7 +61,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 <div>
 <h2>A little about me.</h2>
 <p>{p.bio}</p>
-<p className="muted">I like figuring out why the numbers look the way they do—and making the answer useful to the people who need it.</p>
+<p className="muted">I like figuring out why the numbers look the way they do and making the answer useful to the people who need it.</p>
 <blockquote className="about-quote"><p>“In the middle of difficulty lies opportunity.”</p><cite>— Albert Einstein</cite></blockquote>
 <div className="education">
 <span className="mono">EDUCATION</span>
