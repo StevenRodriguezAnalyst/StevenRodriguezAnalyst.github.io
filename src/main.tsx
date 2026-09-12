@@ -146,22 +146,16 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </div>
 </article>)}</section>
 <section id="experience" className="section experience">
-<div className="label">03 / EXPERIENCE</div>
-<div>
-<h2>Where I’ve worked.</h2>{p.experience.map(e=>
-<article className="experience-row" key={e.company}>
-<div className="experience-meta">
-<span>{e.dates}</span>
-<span>{e.location}</span>
-</div>
+<div className="experience-heading"><div className="label">03 / EXPERIENCE</div><h2>Where I’ve worked.</h2></div>
+{p.experience.map(e=><article className="experience-row" key={e.company}>
+<div className="experience-overview">
+<div className="experience-meta"><span>{e.dates}</span><span>{e.location}</span></div>
 {e.logo && <div className="experience-logo"><img src={e.logo} alt={e.logoAlt} width="553" height="169" loading="lazy" decoding="async" /></div>}
-<h3>{e.company}</h3>
-<strong className="role">{e.role}</strong>
-<p>{e.description}</p>
-<ul className="accomplishments">{e.accomplishments.map(a=>
-<li key={a}>{a}</li>)}</ul>
+<h3>{e.company}</h3><strong className="role">{e.role}</strong>
 <div className="tools">{e.tools}</div>
-</article>)}</div>
+</div>
+<div className="experience-details"><p>{e.description}</p><ul className="accomplishments">{e.accomplishments.map(a=><li key={a}>{a}</li>)}</ul></div>
+</article>)}
 </section>
 <section id="skills" className="section skills">
 <div className="section-heading">
