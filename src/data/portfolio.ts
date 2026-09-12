@@ -6,7 +6,7 @@ export const portfolio = {
   "github": "",
   "linkedin": "https://www.linkedin.com/in/steven-rodriguez-data-analyst",
   "resumeAvailable": true,
-  "bio": "I’m Steven, a Compliance & Data Analyst working in fintech at RentReporters. My experience spans credit reporting, market research, and retail operations, combining data analysis with an understanding of how businesses operate. I studied Marketing and Information Systems at CSU Fullerton and bring that mix of technical and business knowledge to my work.",
+  "bio": "I’m Steven, a Compliance & Data Analyst at RentReporters, a fintech company helping renters build credit. My experience combines data analytics, compliance operations, CRM systems, and workflow automation. I graduated Cum Laude from CSU Fullerton with a B.A. in Business Administration, concentrating in Marketing and Information Systems.",
   "education": {
     "school": "California State University, Fullerton",
     "dates": "B.A. Business Administration · 2025",
@@ -24,9 +24,9 @@ export const portfolio = {
         "Built a Jitterbit pipeline that moves 1,000+ records a week into Salesforce, with rules for matching and transforming 20+ fields.",
         "Resolved 100+ consumer disputes a month, meeting every deadline."
       ],
-      "tools": "Salesforce · Jitterbit · ETL · Data validation",
-      "logo": "",
-      "logoAlt": ""
+      "tools": "Salesforce · Automation · ETL · AI",
+      "logo": "./rentreporters-data-team-small.jpg",
+      "logoAlt": "RentReporters Data Team"
     },
     {
       "company": "OCIE Small Business Development Center",
@@ -51,10 +51,10 @@ export const portfolio = {
       "description": "I used sales, staffing, and inventory data to plan schedules, track performance, and reduce losses.",
       "accomplishments": [
         "Analyzed sales and foot traffic with Excel PivotTables, reducing payroll expenses by 6% while managing two employees.",
-        "Used Target Greenfield data to track team performance and plan changes that improved reported KPIs by 30%.",
+        "Used data warehouse reports to track team performance and plan changes that improved reported KPIs by 30%.",
         "Analyzed 1,000 rows of inventory and sales data to prevent $100K in potential inventory loss."
       ],
-      "tools": "Excel · PivotTables · Target Greenfield · KPI reporting",
+      "tools": "Excel · PivotTables · Data warehouse · KPI",
       "logo": "./target-logo.jpg",
       "logoAlt": "Target bullseye"
     }
@@ -91,8 +91,7 @@ export const portfolio = {
       "name": "Data workflows",
       "items": [
         "Salesforce · Jitterbit",
-        "ETL & data validation",
-        "Fluent Spanish"
+        "ETL & data validation"
       ],
       "verified": true
     }
@@ -130,11 +129,11 @@ export const portfolio = {
       "type": "Data processing",
       "tools": "Jitterbit · Salesforce · ETL",
       "description": "Designed a Jitterbit ETL pipeline with field mappings and transformation logic to improve Salesforce data accuracy and customer credit score reporting.",
-      "question": "How could we move customer records into Salesforce each week with fewer data errors?",
-      "method": "I built and maintained a Jitterbit pipeline with rules to match and transform more than 20 fields before sending records to Salesforce.",
-      "result": "Processed 1,000+ records weekly and improved customer credit score reporting accuracy.",
+      "question": "How could we move customer records into Salesforce every day with fewer data errors?",
+      "method": "I built and maintained a Jitterbit pipeline that runs daily, with rules to match and transform more than 20 fields before sending records to Salesforce.",
+      "result": "The daily pipeline processes 1,000+ records per week and improves customer credit score reporting accuracy.",
       "metric": "1,000+",
-      "metricLabel": "Records processed each week",
+      "metricLabel": "Records per week · Runs daily",
       "kind": "scatter"
     }
   ]

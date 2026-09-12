@@ -1,39 +1,89 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {createRoot} from 'react-dom/client';
 import {portfolio as p} from './data/portfolio';
 import './style.css';
-function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useState(()=>{try{return localStorage.getItem("portfolio-theme") || "light"}catch{return "light"}});useEffect(()=>{document.documentElement.dataset.theme=theme;try{localStorage.setItem("portfolio-theme",theme)}catch{}},[theme]);return <>
+function App() {
+  const [menu, setMenu] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
+  const [theme, setTheme] = useState(() => {
+    try { return localStorage.getItem('portfolio-theme') === 'dark' ? 'dark' : 'light'; }
+    catch { return 'light'; }
+  });
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem('portfolio-theme', theme); } catch {}
+  }, [theme]);
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    // Anchor offsets and the menu follow the real header height, including text zoom and safe areas.
+    const observer = new ResizeObserver(() => {
+      document.documentElement.style.setProperty('--header-offset', `${header.getBoundingClientRect().height}px`);
+    });
+    observer.observe(header);
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const closeOnDesktop = () => {
+      if (!desktop.matches) return;
+      if (document.activeElement === menuRef.current) header.querySelector<HTMLAnchorElement>('.brand')?.focus();
+      setMenu(false);
+    };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => { observer.disconnect(); desktop.removeEventListener('change', closeOnDesktop); };
+  }, []);
+  useEffect(() => {
+    if (!menu) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { setMenu(false); menuRef.current?.focus(); }
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMenu(false);
+    };
+    const close = () => setMenu(false);
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('hashchange', close);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('hashchange', close);
+    };
+  }, [menu]);
+  return <>
 <a className="skip" href="#main">Skip to content</a>
-<header>
-<a className="brand" href="#">sr<span>_</span>
-</a>
-<button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={menu} onClick={()=>setMenu(!menu)}>Menu {menu ? "−" : "+"}</button>
-<nav className={menu ? "is-open" : ""} onClick={()=>setMenu(false)} aria-label="Main navigation">
-<a href="#">Home</a>
+<header ref={headerRef} onBlur={event => {
+  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setMenu(false);
+}}>
+<a className="brand" href="#main" aria-label="Steven Rodriguez — home" onClick={() => setMenu(false)}>sr<span>_</span></a>
+<button className="theme-toggle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>{theme === 'light' ? 'Dark' : 'Light'}</button>
+<a className="nav-contact button" href="#contact" onClick={() => setMenu(false)}>Contact</a>
+<button ref={menuRef} className="menu-toggle" aria-label={menu ? 'Close navigation' : 'Open navigation'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)}>Menu <span aria-hidden="true">{menu ? '−' : '+'}</span></button>
+<nav id="main-navigation" className={menu ? 'is-open' : ''} onClick={event => {
+  if ((event.target as Element).closest('a')) setMenu(false);
+}} aria-label="Main navigation">
+<a href="#main">Home</a>
 <a href="#about">About</a>
 <a href="#work">Work</a>
 <a href="#experience">Experience</a>
 <a href="#skills">Skills</a>
 <a href="#resume">Resume</a>
 </nav>
-<button className="theme-toggle" onClick={()=>setTheme(theme === "light" ? "dark" : "light")} aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}>{theme === "light" ? "Dark" : "Light"}</button>
-<a className="nav-contact" href="#contact">Contact <span>↗</span>
-</a>
 </header>
-<main id="main">
+<main id="main" tabIndex={-1}>
 <section className="hero">
 <div className="eyebrow">
 <span className="square"/> STEVEN RODRIGUEZ / DATA ANALYST</div>
-<h1>I make data<br/>
-<span className="serif">easier to use.</span>
+<h1>I turn complex data<br/>
+<span className="serif">into better decisions.</span>
 </h1>
+<div className="hero-portrait portrait-frame"><img src="./steven-rodriguez-480.jpg" srcSet="./steven-rodriguez-480.jpg 360w, ./steven-rodriguez-960.jpg 721w" sizes="(max-width: 760px) 173px, 384px" alt="Steven Rodriguez" width="2316" height="3084" fetchPriority="high" decoding="async" /></div>
 <div className="hero-bottom">
 <div>
-<p>I transform and analyze data, solve business problems,<br className="desktop"/> and automate workflows.</p>
+<p>I analyze data, solve business problems,<br className="desktop"/> and automate workflows.</p>
 <div className="actions">
-<a className="button dark" href="#work">See my work <span>↗</span>
+<a className="button dark" href="#work">See my work
 </a>
-<a className="text-link" href="#contact">Contact me <span>↗</span>
+<a className="button" href="#contact">Contact me
 </a>
 </div>
 </div>
@@ -53,15 +103,15 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </div>
 <div className="hero-foot">
 <span>BASED IN ORANGE COUNTY, CA</span>
-<a href="#about">SCROLL TO DISCOVER ↓</a>
+<a href="#about">ABOUT ME</a>
 </div>
 </section>
-<section id="about" className="section about">
-<div className="about-portrait"><div className="label">01 / ABOUT</div><div className="portrait-frame"><img src="./steven-rodriguez-neutral.png" alt="Steven Rodriguez" width="2316" height="3084" loading="lazy" decoding="async" /></div></div>
+<section id="about" tabIndex={-1} className="section about">
+<div className="label">01 / ABOUT</div>
 <div>
 <h2>A little about me.</h2>
 <p>{p.bio}</p>
-<p className="muted">I like figuring out why the numbers look the way they do and making the answer useful to the people who need it.</p>
+<p className="muted">I’m interested in how data can solve business problems. Through reporting and automation, I help teams improve efficiency, maintain data accuracy, and make informed decisions. I enjoy connecting with people in analytics, technology, and finance who share that interest.</p>
 <blockquote className="about-quote"><p>“In the middle of difficulty lies opportunity.”</p><cite>— Albert Einstein</cite></blockquote>
 <div className="education">
 <span className="mono">EDUCATION</span>
@@ -70,7 +120,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </div>
 </div>
 </section>
-<section id="work" className="section work">
+<section id="work" tabIndex={-1} className="section work">
 <div className="section-heading">
 <div>
 <div className="label">02 / SELECTED WORK</div>
@@ -82,7 +132,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </p>
 </div>{p.projects.map(project=>
 <article className="project" key={project.id}>
-<div className={'project-visual '+project.kind} aria-label={project.type+' summary diagram'} role="img">
+<div className={'project-visual '+project.kind} aria-label={project.type + ': ' + project.metric + ' ' + project.metricLabel + (project.kind === 'bars' ? '. Relative processing time: before 100, after 30.' : project.kind === 'cohort' ? '. Coverage: Orange, Riverside, and San Bernardino counties.' : '. Source records, 20+ field mappings, Salesforce CRM.')} role="img">
 <div className="visual-label">
 <span>{project.type.toUpperCase()}</span>
 <span>FIG. {project.id}</span>
@@ -91,7 +141,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 <div key={c}>
 <span className="mono">0{i+1}</span>
 <strong>{c}</strong>
-<span>↗</span>
+
 </div>)}<p>Client representation × population</p>
 </div>:project.kind==='bars'?<div className="comparison">
 <div>
@@ -101,7 +151,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </div>
 <div>
 <span>AFTER</span>
-<i style={{width:'25.5%'}}/>
+<i style={{width:'30%'}}/>
 <b>30</b>
 </div>
 <p>Relative processing time · baseline = 100</p>
@@ -131,7 +181,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 <p>{project.description}</p>
 <div className="tools">{project.tools}</div>
 <details>
-<summary>Read case study <span>↗</span>
+<summary><span className="case-closed">Read case study</span><span className="case-open">Close case study</span>
 </summary>
 <div className="case-study">
 <h4>The question</h4>
@@ -145,19 +195,19 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </details>
 </div>
 </article>)}</section>
-<section id="experience" className="section experience">
+<section id="experience" tabIndex={-1} className="section experience">
 <div className="experience-heading"><div className="label">03 / EXPERIENCE</div><h2>Where I’ve worked.</h2></div>
 {p.experience.map(e=><article className="experience-row" key={e.company}>
 <div className="experience-overview">
 <div className="experience-meta"><span>{e.dates}</span><span>{e.location}</span></div>
-{e.logo && <div className={e.company === "Target Corporation" ? "experience-logo target-logo" : "experience-logo"}><img src={e.logo} alt={e.logoAlt} width="553" height="169" loading="lazy" decoding="async" /></div>}
+{e.logo && <div className={e.company === "Target Corporation" ? "experience-logo target-logo" : e.company === "RentReporters" ? "experience-logo rentreporters-logo" : "experience-logo"}><img src={e.logo} alt={e.logoAlt} width={e.company === "Target Corporation" ? 225 : e.company === "RentReporters" ? 720 : 548} height={e.company === "Target Corporation" ? 225 : e.company === "RentReporters" ? 480 : 169} loading="lazy" decoding="async" /></div>}
 <h3>{e.company}</h3><strong className="role">{e.role}</strong>
 <div className="tools">{e.tools}</div>
 </div>
 <div className="experience-details"><p>{e.description}</p><ul className="accomplishments">{e.accomplishments.map(a=><li key={a}>{a}</li>)}</ul></div>
 </article>)}
 </section>
-<section id="skills" className="section skills">
+<section id="skills" tabIndex={-1} className="section skills">
 <div className="section-heading">
 <div>
 <div className="label">04 / TOOLKIT</div>
@@ -176,34 +226,34 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 <li key={x}>{x}</li>)}</ul>
 </div>)}</div>
 </section>
-<section id="resume" className="section resume">
+<section id="resume" tabIndex={-1} className="section resume">
 <div>
 <div className="label">05 / RÉSUMÉ</div>
 <h2>My résumé.</h2>
 <p>My work history, education, and skills in one PDF.</p>
 </div>
 <div>{p.resumeAvailable?<div className="actions">
-<a className="button dark" href="./resume.pdf" target="_blank" rel="noreferrer">View résumé ↗</a>
-<a className="button" href="./resume.pdf" download>Download PDF ↓</a>
+<a className="button dark" href="./resume.pdf" target="_blank" rel="noreferrer">View résumé</a>
+<a className="button" href="./resume.pdf" download>Download PDF</a>
 </div>:<>
 <div className="actions">
-<button className="button" disabled>View résumé ↗</button>
-<button className="button" disabled>Download PDF ↓</button>
+<button className="button" disabled>View résumé</button>
+<button className="button" disabled>Download PDF</button>
 </div>
 <p className="sample-note">Résumé coming soon.</p>
 </>}</div>
 </section>
-<section id="contact" className="section contact">
+<section id="contact" tabIndex={-1} className="section contact">
 <div className="label">06 / CONTACT</div>
 <h2>Want to<br/><span className="serif">get in touch?</span>
 </h2>
 <div className="contact-bottom">
 <p>Have a question about my work or a role in mind? Send me an email.</p>
-<a className="button dark" href={p.email ? 'mailto:'+p.email : p.linkedin} target={p.email?undefined:'_blank'} rel="noreferrer">{p.email?'Email me':'Connect on LinkedIn'} <span>↗</span>
+<a className="button dark" href={p.email ? 'mailto:'+p.email : p.linkedin} target={p.email?undefined:'_blank'} rel="noreferrer">{p.email?'Email me':'Connect on LinkedIn'}
 </a>
 </div>
 <div className="socials">
-<a href={p.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>{p.github?<a href={p.github} target="_blank" rel="noreferrer">GitHub ↗</a>:<span>GitHub · coming soon</span>}{!p.email&&<span>Email · coming soon</span>}</div>
+<a href={p.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>{p.github?<a href={p.github} target="_blank" rel="noreferrer">GitHub</a>:<span>GitHub · coming soon</span>}{!p.email&&<span>Email · coming soon</span>}</div>
 </section>
 </main>
 <footer>© {new Date().getFullYear()} Steven Rodriguez <span className="mono">0 errors · 1 analyst found</span>

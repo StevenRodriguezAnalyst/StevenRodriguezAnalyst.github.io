@@ -1,0 +1,58 @@
+<!doctype html><meta charset="utf-8"><title>Portfolio mobile QA</title>
+<style>body{font:16px/1.5 system-ui;margin:24px;background:#fafafa;color:#222}pre{white-space:pre-wrap}iframe{display:block;border:1px solid #bbb;margin:16px 0;background:white}button{padding:12px}</style>
+<h1>Portfolio mobile QA</h1><p>Same-origin layout and interaction checks. Test fixtures are excluded from the production build.</p><pre id="results">Running…</pre><div id="frames"></div>
+<script type="module">
+const results=[]; const output=document.querySelector('#results');
+const tick=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+const pause=ms=>new Promise(r=>setTimeout(r,ms));
+function check(doc,label){
+ const width=doc.documentElement.clientWidth;
+ const visible=e=>e.getClientRects().length && getComputedStyle(e).visibility!=='hidden';
+ const selectors='header,main,section,article,.query,.skill,.actions,nav,footer,.project-visual,.case-study';
+ const overflow=[...doc.querySelectorAll(selectors)].filter(visible).filter(e=>e.scrollWidth>e.clientWidth+1||e.getBoundingClientRect().left < -1||e.getBoundingClientRect().right>width+1).map(e=>e.id||e.className||e.tagName);
+ const small=[...doc.querySelectorAll('a,button,summary')].filter(visible).filter(e=>e.getBoundingClientRect().height<43.9).map(e=>e.textContent.trim());
+ return {state:label,width,pageWidth:doc.documentElement.scrollWidth,overflow,smallTargets:small};
+}
+for(const width of [320,375,390,430,768,1024,1280]){
+ const heading=document.createElement('h2');heading.textContent=width+'px';document.querySelector('#frames').append(heading);
+ const frame=document.createElement('iframe');frame.width=width;frame.height=844;frame.title='Portfolio at '+width+'px';frame.src='/';document.querySelector('#frames').append(frame);
+ await new Promise(r=>frame.addEventListener('load',r,{once:true}));
+ const win=frame.contentWindow,doc=frame.contentDocument;
+ await doc.fonts.ready;await pause(100);await tick();
+ const checks=[check(doc,'closed')];
+ doc.querySelectorAll('summary').forEach(e=>e.click());await tick();checks.push(check(doc,'all three case studies expanded'));
+ const expanded=doc.querySelectorAll('details[open]').length===3;
+ doc.querySelectorAll('summary').forEach(e=>e.click());await tick();
+ const collapsed=doc.querySelectorAll('details[open]').length===0;
+ const menu=doc.querySelector('.menu-toggle');const mobile=getComputedStyle(menu).display!=='none';
+ let interactions={expanded,collapsed};
+ if(mobile){
+  menu.click();await tick();checks.push(check(doc,'menu open'));
+  const open=menu.getAttribute('aria-expanded')==='true';
+  doc.dispatchEvent(new win.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await tick();
+  interactions.escape=menu.getAttribute('aria-expanded')==='false'&&doc.activeElement===menu;
+  menu.click();await tick();doc.querySelector('main').dispatchEvent(new win.PointerEvent('pointerdown',{bubbles:true}));await tick();
+  interactions.outside=menu.getAttribute('aria-expanded')==='false';
+  menu.click();await tick();doc.querySelector('nav a[href="#skills"]').click();await tick();
+  interactions.anchor=menu.getAttribute('aria-expanded')==='false'&&win.location.hash==='#skills';
+  menu.focus();menu.click();await tick();const visibleMenu=doc.querySelector('nav');
+  interactions.open=open&&visibleMenu.getBoundingClientRect().height>0;
+  doc.querySelector('.hero .button').focus();await tick();interactions.focusLeave=menu.getAttribute('aria-expanded')==='false';
+  frame.height=240;menu.click();await tick();
+  interactions.shortViewport=doc.querySelector('nav').getBoundingClientRect().bottom<=doc.documentElement.clientHeight+1;
+  doc.dispatchEvent(new win.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));frame.height=844;await tick();
+ }
+ const originalTheme=doc.documentElement.dataset.theme;doc.querySelector('.theme-toggle').click();await tick();
+ interactions.theme=doc.documentElement.dataset.theme!==originalTheme;checks.push(check(doc,'alternate theme'));
+ doc.querySelector('.theme-toggle').click();await tick();
+ doc.documentElement.style.fontSize='200%';await tick();checks.push(check(doc,'200% root text'));
+ doc.documentElement.style.fontSize='';await tick();
+ for(const img of doc.images) img.loading='eager';await Promise.all([...doc.images].map(img=>img.decode().catch(()=>{})));
+ interactions.images=[...doc.images].every(img=>img.complete&&img.naturalWidth>0);
+ win.scrollTo({top:0,behavior:'instant'});
+ results.push({viewport:width,checks,interactions,portrait:doc.querySelector('.hero-portrait img').currentSrc.split('/').pop()});
+ output.textContent=JSON.stringify(results,null,2);
+}
+const failures=results.flatMap(r=>[...r.checks.filter(c=>c.overflow.length||c.smallTargets.length||c.pageWidth>c.width+1).map(c=>r.viewport+': '+c.state),...Object.entries(r.interactions).filter(([,v])=>!v).map(([k])=>r.viewport+': '+k)]);
+document.querySelector('h1').textContent=failures.length?'FAIL: '+failures.join(', '):'PASS: seven widths, layouts and interactions';
+</script>
