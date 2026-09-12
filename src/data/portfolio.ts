@@ -55,8 +55,8 @@ export const portfolio = {
         "Analyzed 1,000 rows of inventory and sales data to prevent $100K in potential inventory loss."
       ],
       "tools": "Excel · PivotTables · Target Greenfield · KPI reporting",
-      "logo": "",
-      "logoAlt": ""
+      "logo": "./target-logo.jpg",
+      "logoAlt": "Target bullseye"
     }
   ],
   "skills": [
