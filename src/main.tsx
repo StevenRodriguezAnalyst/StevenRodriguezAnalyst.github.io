@@ -57,7 +57,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </div>
 </section>
 <section id="about" className="section about">
-<div className="about-portrait"><div className="label">01 / ABOUT</div><img src="./steven-rodriguez.png" alt="Steven Rodriguez" width="1728" height="2304" loading="lazy" decoding="async" /></div>
+<div className="about-portrait"><div className="label">01 / ABOUT</div><div className="portrait-frame"><img src="./steven-rodriguez-neutral.png" alt="Steven Rodriguez" width="2316" height="3084" loading="lazy" decoding="async" /></div></div>
 <div>
 <h2>A little about me.</h2>
 <p>{p.bio}</p>
