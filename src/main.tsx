@@ -29,7 +29,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </h1>
 <div className="hero-bottom">
 <div>
-<p>I use SQL, Python, and Excel to clean up data,<br className="desktop"/> answer questions, and cut down on manual work.</p>
+<p>I use SQL, Python, and Excel to analyze data,<br className="desktop"/> build reports, and automate recurring tasks.</p>
 <div className="actions">
 <a className="button dark" href="#work">See my work <span>↗</span>
 </a>
@@ -77,7 +77,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 <h2>Some of<br/>my <span className="serif">work.</span>
 </h2>
 </div>
-<p>Reports, account updates, and data cleanup.<br/>
+<p>Market analysis, Salesforce automation, and ETL.<br/>
 <span className="sample-note">Selected projects & professional work</span>
 </p>
 </div>{p.projects.map(project=>
