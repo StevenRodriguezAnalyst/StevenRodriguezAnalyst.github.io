@@ -62,6 +62,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 <h2>A little about me.</h2>
 <p>{p.bio}</p>
 <p className="muted">I like figuring out why the numbers look the way they do—and making the answer useful to the people who need it.</p>
+<blockquote className="about-quote"><p>“In the middle of difficulty lies opportunity.”</p><cite>— Albert Einstein</cite></blockquote>
 <div className="education">
 <span className="mono">EDUCATION</span>
 <strong>{p.education.school}</strong>
