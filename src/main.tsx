@@ -16,7 +16,7 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <a href="#skills">Skills</a>
 <a href="#resume">Resume</a>
 </nav>
-<a className="nav-contact" href="#contact">Let’s talk <span>↗</span>
+<a className="nav-contact" href="#contact">Contact <span>↗</span>
 </a>
 </header>
 <main id="main">
@@ -32,7 +32,7 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <div className="actions">
 <a className="button dark" href="#work">Explore my work <span>↗</span>
 </a>
-<a className="text-link" href="#contact">Get in touch <span>↗</span>
+<a className="text-link" href="#contact">Contact me <span>↗</span>
 </a>
 </div>
 </div>
@@ -75,7 +75,7 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <h2>From question<br/>to <span className="serif">insight.</span>
 </h2>
 </div>
-<p>Three ways to make data useful.<br/>
+<p>Analysis that supports business decisions.<br/>
 <span className="sample-note">Selected projects & professional work</span>
 </p>
 </div>{p.projects.map(project=>
@@ -198,10 +198,10 @@ function App(){const [menu,setMenu]=useState(false);return <>
 </section>
 <section id="contact" className="section contact">
 <div className="label">06 / WHAT’S NEXT</div>
-<h2>Have a question<br/>worth <span className="serif">exploring?</span>
+<h2>Let’s turn insight<br/>into <span className="serif">impact.</span>
 </h2>
 <div className="contact-bottom">
-<p>Let’s connect and see where the data takes us.</p>
+<p>Connect with me about data analytics, business intelligence, and process improvement.</p>
 <a className="button dark" href={p.email ? 'mailto:'+p.email : p.linkedin} target={p.email?undefined:'_blank'} rel="noreferrer">{p.email?'Email me':'Connect on LinkedIn'} <span>↗</span>
 </a>
 </div>

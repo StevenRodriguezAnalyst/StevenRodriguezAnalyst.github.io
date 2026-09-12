@@ -9,7 +9,7 @@ export const portfolio = {
   "bio": "I’m Steven, a Compliance & Data Analyst at RentReporters, based in Orange County. With a background in Marketing and Information Systems from CSU Fullerton, I bring a business perspective to SQL, Python, and visualization—connecting careful analysis to practical decisions.",
   "education": {
     "school": "California State University, Fullerton",
-    "dates": "B.A. Business Administration",
+    "dates": "B.A. Business Administration · 2025",
     "distinction": "Marketing & Information Systems · Cum Laude"
   },
   "experience": [
@@ -94,7 +94,7 @@ export const portfolio = {
   "projects": [
     {
       "id": "01",
-      "title": "Where the next opportunity lives.",
+      "title": "Client coverage & market opportunity.",
       "type": "Client & market analysis",
       "tools": "Excel · Power Query · Census data",
       "description": "Analyzed 7,000+ CRM client records across three Southern California counties to find gaps in geographic market coverage.",
@@ -107,7 +107,7 @@ export const portfolio = {
     },
     {
       "id": "02",
-      "title": "Less processing. More progress.",
+      "title": "Customer workflow automation.",
       "type": "Workflow automation",
       "tools": "Salesforce · AI-assisted automation",
       "description": "Built an automated account-change workflow to reduce manual processing while retaining fraud and security controls.",
@@ -120,7 +120,7 @@ export const portfolio = {
     },
     {
       "id": "03",
-      "title": "Reliable data, from end to end.",
+      "title": "ETL & reporting accuracy.",
       "type": "Data engineering & quality",
       "tools": "Jitterbit · Salesforce · ETL",
       "description": "Designed an end-to-end ETL pipeline to improve the accuracy of customer credit score reporting.",
