@@ -24,7 +24,9 @@ export const portfolio = {
         "Built a Jitterbit pipeline that moves 1,000+ records a week into Salesforce, with rules for matching and transforming 20+ fields.",
         "Resolved 100+ consumer disputes a month, meeting every deadline."
       ],
-      "tools": "Salesforce · Jitterbit · ETL · Data validation"
+      "tools": "Salesforce · Jitterbit · ETL · Data validation",
+      "logo": "",
+      "logoAlt": ""
     },
     {
       "company": "OCIE Small Business Development Center",
@@ -37,7 +39,9 @@ export const portfolio = {
         "Combined research from 5+ databases, saving business clients $2,000+ per report.",
         "Built Tableau dashboards from 1,000+ marketing and survey data points. The findings helped improve outreach and engagement by 15%."
       ],
-      "tools": "Excel · Tableau · CRM · Market research"
+      "tools": "Excel · Tableau · CRM · Market research",
+      "logo": "./sbdc-intel.png",
+      "logoAlt": "SBDC Intel — Market Research and Business Intelligence"
     },
     {
       "company": "Target Corporation",
@@ -50,7 +54,9 @@ export const portfolio = {
         "Used Target Greenfield data to track team performance and plan changes that improved reported KPIs by 30%.",
         "Analyzed 1,000 rows of inventory and sales data to prevent $100K in potential inventory loss."
       ],
-      "tools": "Excel · PivotTables · Target Greenfield · KPI reporting"
+      "tools": "Excel · PivotTables · Target Greenfield · KPI reporting",
+      "logo": "",
+      "logoAlt": ""
     }
   ],
   "skills": [
