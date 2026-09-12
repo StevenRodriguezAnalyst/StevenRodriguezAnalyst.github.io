@@ -29,7 +29,7 @@ function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useSt
 </h1>
 <div className="hero-bottom">
 <div>
-<p>I use SQL, Python, and Excel to clean up data,<br className="desktop"/> answer questions, and cut down on manual work.</p>
+<p>I use SQL, Python, and Excel to prepare and validate data,<br className="desktop"/> investigate business questions, and automate recurring workflows.</p>
 <div className="actions">
 <a className="button dark" href="#work">See my work <span>↗</span>
 </a>
