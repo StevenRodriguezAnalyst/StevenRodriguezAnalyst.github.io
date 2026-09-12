@@ -211,3 +211,26 @@ nav.is-open a{display:block!important;padding:12px 0;min-height:44px}
 .dark{background:#cacaca;color:#282828;border-color:#cacaca}.dark:hover{background:#d2d2d2}.button:hover{background:#5c5c5c;color:#fff}.dark:hover{color:#282828}.skip{background:#4b4b4b;color:#fff}.comparison>div:first-child i{background:#858585}.comparison i{background:#c7c7c7}.contact .button{background:#cacaca;color:#282828}code b{color:#e2e2e2}.query-foot{background:#4b4b4b}.button:disabled{color:#cccccc}.heat-row{color:#e4e4e4}
 
 :root{color-scheme:dark}.menu-toggle{color:inherit}.contact .label,.socials span{color:#cecece}
+
+.about-portrait .label{margin-bottom:28px}.about-portrait img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center;border:1px solid var(--line);border-radius:3px}.about{align-items:start}@media(max-width:760px){.about-portrait img{max-width:300px}.about-portrait .label{margin-bottom:22px}}
+
+.theme-toggle{background:none;border:1px solid var(--line);color:inherit;border-radius:3px;padding:10px 14px;min-height:44px;cursor:pointer;font-size:13px}
+:root[data-theme="light"]{color-scheme:light;color:#282828;background:#fafafa;--muted:#626262;--line:#d8d8d8;--accent:#eeeeee}
+[data-theme="light"] header{background:#fafafaf5}
+[data-theme="light"] nav.is-open{background:#fafafa}
+[data-theme="light"] p,[data-theme="light"] .accomplishments{color:#525252}
+[data-theme="light"] .query,[data-theme="light"] .project-visual,[data-theme="light"] .bars,[data-theme="light"] .scatter{background:#f0f0f0;border-color:#d6d6d6}
+[data-theme="light"] .experience{background:#f3f3f3}
+[data-theme="light"] .query-foot{background:#e5e5e5;color:#555}
+[data-theme="light"] code b,[data-theme="light"] code em,[data-theme="light"] .brand span,[data-theme="light"] .pipeline span,[data-theme="light"] .pipeline>b{color:#535353}
+[data-theme="light"] .dark,[data-theme="light"] .contact .button{background:#303030;color:#fff;border-color:#303030}
+[data-theme="light"] .button:hover{background:#dedede;color:#282828}
+[data-theme="light"] .dark:hover,[data-theme="light"] .contact .button:hover{background:#4b4b4b;color:#fff}
+[data-theme="light"] .visual-label,[data-theme="light"] .visual-bottom span,[data-theme="light"] .market-figure p,[data-theme="light"] .comparison p,[data-theme="light"] .comparison span,[data-theme="light"] .market-figure>div .mono,[data-theme="light"] .contact .label,[data-theme="light"] .socials span{color:#626262}
+[data-theme="light"] .pipeline>div{background:#fafafa;border-color:#ccc}
+[data-theme="light"] .visual-bottom,[data-theme="light"] .market-figure>div,[data-theme="light"] .socials{border-color:#ccc}
+[data-theme="light"] .comparison i{background:#484848}
+[data-theme="light"] .comparison>div:first-child i{background:#aaa}
+[data-theme="light"] nav a:hover,[data-theme="light"] .text-link:hover,[data-theme="light"] summary:hover{color:#111}
+[data-theme="light"] a:focus-visible,[data-theme="light"] button:focus-visible,[data-theme="light"] summary:focus-visible{outline-color:#555}
+@media(max-width:760px){.theme-toggle{margin-right:16px;padding:8px 10px}.menu-toggle{margin-right:12px}}

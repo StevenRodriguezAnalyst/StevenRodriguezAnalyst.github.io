@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {createRoot} from 'react-dom/client';
 import {portfolio as p} from './data/portfolio';
 import './style.css';
-function App(){const [menu,setMenu]=useState(false);return <>
+function App(){const [menu,setMenu]=useState(false);const [theme,setTheme]=useState(()=>{try{return localStorage.getItem("portfolio-theme") || "light"}catch{return "light"}});useEffect(()=>{document.documentElement.dataset.theme=theme;try{localStorage.setItem("portfolio-theme",theme)}catch{}},[theme]);return <>
 <a className="skip" href="#main">Skip to content</a>
 <header>
 <a className="brand" href="#">sr<span>_</span>
@@ -16,6 +16,7 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <a href="#skills">Skills</a>
 <a href="#resume">Resume</a>
 </nav>
+<button className="theme-toggle" onClick={()=>setTheme(theme === "light" ? "dark" : "light")} aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}>{theme === "light" ? "Dark" : "Light"}</button>
 <a className="nav-contact" href="#contact">Contact <span>↗</span>
 </a>
 </header>
@@ -56,7 +57,7 @@ function App(){const [menu,setMenu]=useState(false);return <>
 </div>
 </section>
 <section id="about" className="section about">
-<div className="label">01 / ABOUT</div>
+<div className="about-portrait"><div className="label">01 / ABOUT</div><img src="./steven-rodriguez.png" alt="Steven Rodriguez" width="1728" height="2304" loading="lazy" decoding="async" /></div>
 <div>
 <h2>A little about me.</h2>
 <p>{p.bio}</p>
