@@ -6,7 +6,7 @@ export const portfolio = {
   "github": "",
   "linkedin": "https://www.linkedin.com/in/steven-rodriguez-data-analyst",
   "resumeAvailable": true,
-  "bio": "I’m Steven, a Compliance & Data Analyst at RentReporters, based in Orange County. With a background in Marketing and Information Systems from CSU Fullerton, I bring a business perspective to SQL, Python, and visualization—connecting careful analysis to practical decisions.",
+  "bio": "I’m Steven, a Compliance & Data Analyst at RentReporters in Orange County. I work with customer records, build reports, and automate tasks that take too much time to do by hand. I studied Marketing and Information Systems at CSU Fullerton.",
   "education": {
     "school": "California State University, Fullerton",
     "dates": "B.A. Business Administration · 2025",
@@ -18,11 +18,11 @@ export const portfolio = {
       "location": "Newport Beach, CA",
       "role": "Compliance & Data Analyst",
       "dates": "April 2026 — Present",
-      "description": "Building reliable data workflows for customer account operations and credit reporting.",
+      "description": "I check customer data and build tools that make account updates and credit reporting easier.",
       "accomplishments": [
-        "Automated 200+ monthly account-change requests through an AI-driven Salesforce workflow, reducing processing time by 70%.",
-        "Built a Jitterbit ETL pipeline with 20+ field mappings, processing 1,000+ records weekly.",
-        "Resolved 100+ consumer disputes monthly with a 100% on-time resolution rate."
+        "Built a Salesforce workflow that uses AI to handle 200+ account-change requests a month, cutting processing time by 70%.",
+        "Built a Jitterbit pipeline that moves 1,000+ records a week into Salesforce, with rules for matching and transforming 20+ fields.",
+        "Resolved 100+ consumer disputes a month, meeting every deadline."
       ],
       "tools": "Salesforce · Jitterbit · ETL · Data validation"
     },
@@ -31,11 +31,11 @@ export const portfolio = {
       "location": "Fullerton, CA",
       "role": "Data Research Assistant",
       "dates": "June 2025 — April 2026",
-      "description": "Turning CRM, market, and survey data into useful insights for small businesses and leadership.",
+      "description": "I cleaned client records, researched local markets, and built reports for small businesses and the SBDC team.",
       "accomplishments": [
         "Cleaned and analyzed 1,000+ CRM records, improving data accuracy by 25%.",
         "Combined research from 5+ databases, saving business clients $2,000+ per report.",
-        "Developed Tableau dashboards from 1,000+ marketing and survey data points, identifying trends that improved outreach and engagement by 15%."
+        "Built Tableau dashboards from 1,000+ marketing and survey data points. The findings helped improve outreach and engagement by 15%."
       ],
       "tools": "Excel · Tableau · CRM · Market research"
     },
@@ -44,10 +44,10 @@ export const portfolio = {
       "location": "Fullerton, CA",
       "role": "Assets Protection Specialist",
       "dates": "August 2023 — May 2025",
-      "description": "Using operational data to improve team performance and protect inventory.",
+      "description": "I used sales, staffing, and inventory data to plan schedules, track performance, and reduce losses.",
       "accomplishments": [
         "Analyzed sales and foot traffic with Excel PivotTables, reducing payroll expenses by 6% while managing two employees.",
-        "Created KPI reporting and action plans using Target Greenfield data, improving KPI metrics by 30%.",
+        "Used Target Greenfield data to track team performance and plan changes that improved reported KPIs by 30%.",
         "Analyzed 1,000 rows of inventory and sales data to prevent $100K in potential inventory loss."
       ],
       "tools": "Excel · PivotTables · Target Greenfield · KPI reporting"
@@ -94,25 +94,25 @@ export const portfolio = {
   "projects": [
     {
       "id": "01",
-      "title": "Client coverage & market opportunity.",
+      "title": "Finding cities with fewer clients.",
       "type": "Client & market analysis",
       "tools": "Excel · Power Query · Census data",
-      "description": "Analyzed 7,000+ CRM client records across three Southern California counties to find gaps in geographic market coverage.",
+      "description": "I compared 7,000+ client records with population data across Orange, Riverside, and San Bernardino counties.",
       "question": "Which cities have fewer clients than their population share would suggest?",
-      "method": "Built county reports with PivotTables, XLOOKUP, and Power Query. Standardized city names and duplicate entries with AI-assisted cleaning, then compared client distribution against U.S. Census population data.",
-      "result": "Identified 10+ underserved markets for targeted outreach. Estimated manual cleanup time fell by 80%+, while data accuracy improved by 30%+.",
+      "method": "I used PivotTables, XLOOKUP, and Power Query to build county reports. AI-assisted cleaning helped fix city names and duplicate entries before I compared the records with U.S. Census data.",
+      "result": "Found 10+ cities where client numbers were low relative to population. Manual cleanup time fell by an estimated 80%+, and data accuracy improved by 30%+.",
       "metric": "7,000+",
       "metricLabel": "Client records analyzed · April 2026",
       "kind": "cohort"
     },
     {
       "id": "02",
-      "title": "Customer workflow automation.",
+      "title": "Faster customer account updates.",
       "type": "Workflow automation",
       "tools": "Salesforce · AI-assisted automation",
-      "description": "Built an automated account-change workflow to reduce manual processing while retaining fraud and security controls.",
-      "question": "How can recurring customer requests move faster without losing the checks that protect account integrity?",
-      "method": "Created an AI-driven Salesforce workflow for customer account-change requests, with fraud and security controls incorporated into processing.",
+      "description": "I built a Salesforce workflow to handle account-change requests with less manual work, while keeping fraud and security checks in place.",
+      "question": "How could we process account changes faster while keeping the necessary checks?",
+      "method": "I built an AI-assisted Salesforce workflow that handles account-change requests and applies fraud and security checks.",
       "result": "Automated 200+ monthly requests and reduced processing time by 70%.",
       "metric": "70%",
       "metricLabel": "Reduction in processing time",
@@ -120,12 +120,12 @@ export const portfolio = {
     },
     {
       "id": "03",
-      "title": "ETL & reporting accuracy.",
-      "type": "Data engineering & quality",
+      "title": "Getting records into Salesforce.",
+      "type": "Data processing",
       "tools": "Jitterbit · Salesforce · ETL",
-      "description": "Designed an end-to-end ETL pipeline to improve the accuracy of customer credit score reporting.",
-      "question": "How can customer records move into Salesforce consistently and accurately at weekly volume?",
-      "method": "Designed and maintained a Jitterbit pipeline with more than 20 field mappings and transformation logic for Salesforce CRM.",
+      "description": "I built a Jitterbit pipeline to move customer records into Salesforce and improve credit score reporting accuracy.",
+      "question": "How could we move customer records into Salesforce each week with fewer data errors?",
+      "method": "I built and maintained a Jitterbit pipeline with rules to match and transform more than 20 fields before sending records to Salesforce.",
       "result": "Processed 1,000+ records weekly and improved customer credit score reporting accuracy.",
       "metric": "1,000+",
       "metricLabel": "Records processed each week",

@@ -23,14 +23,14 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <section className="hero">
 <div className="eyebrow">
 <span className="square"/> STEVEN RODRIGUEZ / DATA ANALYST</div>
-<h1>I turn data into<br/>
-<span className="serif">clear decisions.</span>
+<h1>I make data<br/>
+<span className="serif">easier to use.</span>
 </h1>
 <div className="hero-bottom">
 <div>
-<p>I use SQL, Python, and visualization to turn<br className="desktop"/> complex business data into a clear next step.</p>
+<p>I use SQL, Python, and Excel to clean up data,<br className="desktop"/> answer questions, and cut down on manual work.</p>
 <div className="actions">
-<a className="button dark" href="#work">Explore my work <span>↗</span>
+<a className="button dark" href="#work">See my work <span>↗</span>
 </a>
 <a className="text-link" href="#contact">Contact me <span>↗</span>
 </a>
@@ -38,15 +38,15 @@ function App(){const [menu,setMenu]=useState(false);return <>
 </div>
 <div className="query">
 <div className="query-top">
-<span>perspective.sql</span>
+<span>analyst.sql</span>
 <span>SQL</span>
 </div>
 <code>
-<b>SELECT</b> clarity, impact<br/>
-<b>FROM</b> everyday_data<br/>
-<b>WHERE</b> curiosity = <em>true</em>;<span className="cursor"/>
+<b>SELECT</b> name, role<br/>
+<b>FROM</b> portfolio<br/>
+<b>WHERE</b> role = <em>'Data Analyst'</em>;<span className="cursor"/>
 </code>
-<div className="query-foot">↳ 1 analyst found <span>Ready to explore</span>
+<div className="query-foot">↳ 1 analyst found <span>1 row returned</span>
 </div>
 </div>
 </div>
@@ -58,9 +58,9 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <section id="about" className="section about">
 <div className="label">01 / ABOUT</div>
 <div>
-<h2>Good analysis starts with<br/>a better question.</h2>
+<h2>A little about me.</h2>
 <p>{p.bio}</p>
-<p className="muted">My approach: understand the context, question the assumptions, and let the evidence guide the story.</p>
+<p className="muted">I like figuring out why the numbers look the way they do—and making the answer useful to the people who need it.</p>
 <div className="education">
 <span className="mono">EDUCATION</span>
 <strong>{p.education.school}</strong>
@@ -72,10 +72,10 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <div className="section-heading">
 <div>
 <div className="label">02 / SELECTED WORK</div>
-<h2>From question<br/>to <span className="serif">insight.</span>
+<h2>Some of<br/>my <span className="serif">work.</span>
 </h2>
 </div>
-<p>Analysis that supports business decisions.<br/>
+<p>Reports, account updates, and data cleanup.<br/>
 <span className="sample-note">Selected projects & professional work</span>
 </p>
 </div>{p.projects.map(project=>
@@ -134,9 +134,9 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <div className="case-study">
 <h4>The question</h4>
 <p>{project.question}</p>
-<h4>The approach</h4>
+<h4>What I did</h4>
 <p>{project.method}</p>
-<h4>The takeaway</h4>
+<h4>The result</h4>
 <p>{project.result}</p>
 <p className="sample-note">Summary based on my résumé. Client data and internal systems are not shared here.</p>
 </div>
@@ -164,7 +164,7 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <div className="section-heading">
 <div>
 <div className="label">04 / TOOLKIT</div>
-<h2>The tools behind<br/>the thinking.</h2>
+<h2>Tools I use.</h2>
 </div>
 <code>
 <b>SELECT</b> skill <b>FROM</b> toolkit;<br/>
@@ -182,8 +182,8 @@ function App(){const [menu,setMenu]=useState(false);return <>
 <section id="resume" className="section resume">
 <div>
 <div className="label">05 / RÉSUMÉ</div>
-<h2>The background.<br/>In one place.</h2>
-<p>A concise look at my experience, education, and toolkit.</p>
+<h2>My résumé.</h2>
+<p>My work history, education, and skills in one PDF.</p>
 </div>
 <div>{p.resumeAvailable?<div className="actions">
 <a className="button dark" href="./resume.pdf" target="_blank" rel="noreferrer">View résumé ↗</a>
@@ -197,11 +197,11 @@ function App(){const [menu,setMenu]=useState(false);return <>
 </>}</div>
 </section>
 <section id="contact" className="section contact">
-<div className="label">06 / WHAT’S NEXT</div>
-<h2>Let’s turn insight<br/>into <span className="serif">impact.</span>
+<div className="label">06 / CONTACT</div>
+<h2>Want to<br/><span className="serif">get in touch?</span>
 </h2>
 <div className="contact-bottom">
-<p>Connect with me about data analytics, business intelligence, and process improvement.</p>
+<p>Have a question about my work or a role in mind? Send me an email.</p>
 <a className="button dark" href={p.email ? 'mailto:'+p.email : p.linkedin} target={p.email?undefined:'_blank'} rel="noreferrer">{p.email?'Email me':'Connect on LinkedIn'} <span>↗</span>
 </a>
 </div>
