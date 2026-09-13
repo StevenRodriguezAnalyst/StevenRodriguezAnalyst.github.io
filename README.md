@@ -19,7 +19,9 @@ Projects summarize work documented in the supplied résumé. Update their questi
 
 ## Résumé and contact
 
-Put your PDF at `public/resume.pdf`, then set `resumeAvailable: true` in the content file. The view link opens a new tab and the download link downloads that same PDF. Set `email` and `github` to enable those contact links. Empty values use an honest coming-soon state, with LinkedIn as the main contact method.
+The source résumé is `Resume/Steven Rodriguez Resume.docx`. The site serves an exact download copy at `public/resume.docx`; `public/resume.pdf` and `public/resume-preview.webp` are derived previews. `public/resume.html` provides an in-site preview with PDF and Word downloads, avoiding dependence on new-tab PDF viewers. When updating the source, regenerate these preview assets and the accessible transcript in the preview page together. The PDF conversion uses slightly tighter line spacing to keep the final bullet on the same page; the original Word document is unchanged.
+
+Set `resumeAvailable` in the content file to enable the buttons. Set `email` and `github` to enable those contact links. Empty values retain their coming-soon state.
 
 ## Build and deploy for free
 
@@ -35,4 +37,4 @@ For GitHub Pages under a repository subpath, build with `pnpm exec vite build --
 
 Responsive layouts, mobile navigation, semantic sections, a skip link, visible keyboard focus, native case-study disclosures, and reduced-motion support are included. Fonts load from Google Fonts with local fallbacks. No animation or icon library is required. The GitHub link remains unset until a real profile is supplied.
 
-Source references: the supplied website brief and https://www.linkedin.com/in/steven-rodriguez-data-analyst (public preview and user screenshots), plus the supplied résumé. The downloadable PDF omits an accidental Lorem ipsum bullet; the original document is unchanged.
+Source references: the supplied website brief and https://www.linkedin.com/in/steven-rodriguez-data-analyst (public preview and user screenshots), plus the supplied résumé. The résumé preview and downloads preserve the supplied document’s text, including its existing placeholder bullet.

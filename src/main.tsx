@@ -255,15 +255,15 @@ function App() {
 <div>
 <div className="label">05 / RÉSUMÉ</div>
 <h2>My résumé.</h2>
-<p>My work history, education, and skills in one PDF.</p>
+<p>My work history, education, and skills.</p>
 </div>
 <div>{p.resumeAvailable?<div className="actions">
-<a className="button dark" href="./resume.pdf" target="_blank" rel="noreferrer">View résumé</a>
-<a className="button" href="./resume.pdf" download>Download PDF</a>
+<a className="button dark" href="./resume.html">View résumé</a>
+<a className="button" href="./resume.docx" download="Steven Rodriguez Resume.docx">Download Word</a>
 </div>:<>
 <div className="actions">
 <button className="button" disabled>View résumé</button>
-<button className="button" disabled>Download PDF</button>
+<button className="button" disabled>Download Word</button>
 </div>
 <p className="sample-note">Résumé coming soon.</p>
 </>}</div>
