@@ -4,6 +4,7 @@ import {portfolio as p} from './data/portfolio';
 import './style.css';
 function App() {
   const [menu, setMenu] = useState(false);
+  const [activeSection, setActiveSection] = useState("main");
   const headerRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLButtonElement>(null);
   const [theme, setTheme] = useState(() => {
@@ -49,25 +50,49 @@ function App() {
       window.removeEventListener('hashchange', close);
     };
   }, [menu]);
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.hero, main > section[id]'));
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const offset = (headerRef.current?.getBoundingClientRect().height ?? 80) + 48;
+      let current = 'main';
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= offset) current = section.id || 'main';
+      }
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = 'contact';
+      setActiveSection(current);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', schedule, {passive: true});
+    window.addEventListener('resize', schedule);
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
   return <>
 <a className="skip" href="#main">Skip to content</a>
 <header ref={headerRef} onBlur={event => {
   if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setMenu(false);
 }}>
 <a className="brand" href="#main" aria-label="Steven Rodriguez — home" onClick={() => setMenu(false)}>sr<span>_</span></a>
-<button className="theme-toggle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>{theme === 'light' ? 'Dark' : 'Light'}</button>
-<a className="nav-contact button" href="#contact" onClick={() => setMenu(false)}>Contact</a>
-<button ref={menuRef} className="menu-toggle" aria-label={menu ? 'Close navigation' : 'Open navigation'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)}>Menu <span aria-hidden="true">{menu ? '−' : '+'}</span></button>
 <nav id="main-navigation" className={menu ? 'is-open' : ''} onClick={event => {
   if ((event.target as Element).closest('a')) setMenu(false);
 }} aria-label="Main navigation">
-<a href="#main">Home</a>
-<a href="#about">About</a>
-<a href="#work">Work</a>
-<a href="#experience">Experience</a>
-<a href="#skills">Skills</a>
-<a href="#resume">Resume</a>
+<a href="#main" aria-current={activeSection === "main" ? "location" : undefined}> Home</a>
+<a href="#about" aria-current={activeSection === "about" ? "location" : undefined}> About</a>
+<a href="#work" aria-current={activeSection === "work" ? "location" : undefined}> Work</a>
+<a href="#experience" aria-current={activeSection === "experience" ? "location" : undefined}> Experience</a>
+<a href="#skills" aria-current={activeSection === "skills" ? "location" : undefined}> Skills</a>
+<a href="#resume" aria-current={activeSection === "resume" ? "location" : undefined}> Resume</a>
 </nav>
+<button className="theme-toggle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>{theme === 'light' ? 'Dark' : 'Light'}</button>
+<a className="nav-contact button" href="#contact" aria-current={activeSection === "contact" ? "location" : undefined} onClick={() => setMenu(false)}>Contact</a>
+<button ref={menuRef} className="menu-toggle" aria-label={menu ? 'Close navigation' : 'Open navigation'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)}>Menu <span aria-hidden="true">{menu ? '−' : '+'}</span></button>
+
 </header>
 <main id="main" tabIndex={-1}>
 <section className="hero">

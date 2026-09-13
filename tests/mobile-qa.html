@@ -1,6 +1,6 @@
-<!doctype html><meta charset="utf-8"><title>Portfolio mobile QA</title>
+<!doctype html><meta charset="utf-8"><title>Portfolio responsive QA</title>
 <style>body{font:16px/1.5 system-ui;margin:24px;background:#fafafa;color:#222}pre{white-space:pre-wrap}iframe{display:block;border:1px solid #bbb;margin:16px 0;background:white}button{padding:12px}</style>
-<h1>Portfolio mobile QA</h1><p>Same-origin layout and interaction checks. Test fixtures are excluded from the production build.</p><pre id="results">Running…</pre><div id="frames"></div>
+<h1>Portfolio responsive QA</h1><p>Same-origin layout and interaction checks. Test fixtures are excluded from the production build.</p><pre id="results">Running…</pre><div id="frames"></div>
 <script type="module">
 const results=[]; const output=document.querySelector('#results');
 const tick=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
@@ -13,12 +13,12 @@ function check(doc,label){
  const small=[...doc.querySelectorAll('a,button,summary')].filter(visible).filter(e=>e.getBoundingClientRect().height<43.9).map(e=>e.textContent.trim());
  return {state:label,width,pageWidth:doc.documentElement.scrollWidth,overflow,smallTargets:small};
 }
-for(const width of [320,375,390,430,768,1024,1280]){
+for(const width of [320,375,390,430,768,1024,1280,1366,1440,1536,1920,2560]){
  const heading=document.createElement('h2');heading.textContent=width+'px';document.querySelector('#frames').append(heading);
  const frame=document.createElement('iframe');frame.width=width;frame.height=844;frame.title='Portfolio at '+width+'px';frame.src='/';document.querySelector('#frames').append(frame);
  await new Promise(r=>frame.addEventListener('load',r,{once:true}));
  const win=frame.contentWindow,doc=frame.contentDocument;
- await doc.fonts.ready;await pause(100);await tick();
+ await doc.fonts.ready;doc.documentElement.style.scrollBehavior='auto';await pause(100);await tick();
  const checks=[check(doc,'closed')];
  doc.querySelectorAll('summary').forEach(e=>e.click());await tick();checks.push(check(doc,'all three case studies expanded'));
  const expanded=doc.querySelectorAll('details[open]').length===3;
@@ -42,6 +42,15 @@ for(const width of [320,375,390,430,768,1024,1280]){
   interactions.shortViewport=doc.querySelector('nav').getBoundingClientRect().bottom<=doc.documentElement.clientHeight+1;
   doc.dispatchEvent(new win.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));frame.height=844;await tick();
  }
+ // Ensure anchor highlighting and target visibility work after header resizing.
+ await pause(100);
+ if(mobile) menu.click();
+ doc.querySelector('nav a[href="#work"]').click();await pause(150);await tick();
+ interactions.activeSection=doc.querySelector('nav a[href="#work"]').getAttribute('aria-current')==='location';
+ interactions.anchorVisible=doc.querySelector('#work').getBoundingClientRect().top>=doc.querySelector('header').getBoundingClientRect().bottom-1;
+ const title=doc.querySelector('.project-copy h3'),originalTitle=title.textContent;
+ title.textContent='Customer reporting and account-change automation across regional business operations';
+ await tick();checks.push(check(doc,'long project title'));title.textContent=originalTitle;
  const originalTheme=doc.documentElement.dataset.theme;doc.querySelector('.theme-toggle').click();await tick();
  interactions.theme=doc.documentElement.dataset.theme!==originalTheme;checks.push(check(doc,'alternate theme'));
  doc.querySelector('.theme-toggle').click();await tick();
@@ -54,5 +63,5 @@ for(const width of [320,375,390,430,768,1024,1280]){
  output.textContent=JSON.stringify(results,null,2);
 }
 const failures=results.flatMap(r=>[...r.checks.filter(c=>c.overflow.length||c.smallTargets.length||c.pageWidth>c.width+1).map(c=>r.viewport+': '+c.state),...Object.entries(r.interactions).filter(([,v])=>!v).map(([k])=>r.viewport+': '+k)]);
-document.querySelector('h1').textContent=failures.length?'FAIL: '+failures.join(', '):'PASS: seven widths, layouts and interactions';
+document.querySelector('h1').textContent=failures.length?'FAIL: '+failures.join(', '):'PASS: twelve widths, layouts and interactions';
 </script>
