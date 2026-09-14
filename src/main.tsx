@@ -2,6 +2,13 @@ import React, {useState, useEffect, useRef} from 'react';
 import {createRoot} from 'react-dom/client';
 import {portfolio as p} from './data/portfolio';
 import './style.css';
+
+try {
+  document.documentElement.dataset.theme = localStorage.getItem('portfolio-theme') === 'dark' ? 'dark' : 'light';
+} catch {
+  document.documentElement.dataset.theme = 'light';
+}
+
 function App() {
   const [menu, setMenu] = useState(false);
   const [activeSection, setActiveSection] = useState("main");

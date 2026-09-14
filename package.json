@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc && vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "check:security": "node scripts/check-public-assets.mjs",
+    "verify": "pnpm run check:security && pnpm run build"
   },
   "dependencies": {
     "react": "^19.1.0",

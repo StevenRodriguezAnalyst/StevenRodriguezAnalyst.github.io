@@ -1,6 +1,6 @@
 # Steven Rodriguez — Portfolio
 
-A static React, Vite, and TypeScript portfolio. No backend or environment variables are needed.
+A static React, Vite, and TypeScript portfolio. No backend or environment variables are needed. The site uses system font stacks so page loads do not contact a third-party font service.
 
 ## Local development
 
@@ -30,6 +30,8 @@ pnpm build
 ```
 
 The finished static site is in `dist/`. Use build command `pnpm build` and output directory `dist` with Cloudflare Pages, Netlify, or Vercel. No server runtime is required. Hosting platform free-tier terms may vary.
+
+Run `pnpm verify` before publishing. It rejects public JPEGs that contain GPS metadata, then type-checks and builds the site.
 
 For GitHub Pages under a repository subpath, build with `pnpm exec vite build --base=/YOUR-REPOSITORY/` after running `pnpm exec tsc`; update the favicon URL to be relative. Upload `dist/` with GitHub’s Pages artifact workflow. Set the Pages source to GitHub Actions. For a custom domain or root user site, the default base works.
 
