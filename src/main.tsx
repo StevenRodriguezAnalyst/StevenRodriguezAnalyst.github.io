@@ -3,25 +3,11 @@ import {createRoot} from 'react-dom/client';
 import {portfolio as p} from './data/portfolio';
 import './style.css';
 
-try {
-  document.documentElement.dataset.theme = localStorage.getItem('portfolio-theme') === 'dark' ? 'dark' : 'light';
-} catch {
-  document.documentElement.dataset.theme = 'light';
-}
-
 function App() {
   const [menu, setMenu] = useState(false);
   const [activeSection, setActiveSection] = useState("main");
   const headerRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLButtonElement>(null);
-  const [theme, setTheme] = useState(() => {
-    try { return localStorage.getItem('portfolio-theme') === 'dark' ? 'dark' : 'light'; }
-    catch { return 'light'; }
-  });
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    try { localStorage.setItem('portfolio-theme', theme); } catch {}
-  }, [theme]);
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
@@ -96,7 +82,6 @@ function App() {
 <a href="#skills" aria-current={activeSection === "skills" ? "location" : undefined}> Skills</a>
 <a href="#resume" aria-current={activeSection === "resume" ? "location" : undefined}> Resume</a>
 </nav>
-<button className="theme-toggle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>{theme === 'light' ? 'Dark' : 'Light'}</button>
 <a className="nav-contact button" href="#contact" aria-current={activeSection === "contact" ? "location" : undefined} onClick={() => setMenu(false)}>Contact</a>
 <button ref={menuRef} className="menu-toggle" aria-label={menu ? 'Close navigation' : 'Open navigation'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)}>Menu <span aria-hidden="true">{menu ? '−' : '+'}</span></button>
 

@@ -59,10 +59,9 @@ for(const width of [320,375,390,430,768,1024,1280,1366,1440,1536,1920,2560]){
  const title=doc.querySelector('.project-copy h3'),originalTitle=title.textContent;
  title.textContent='Customer reporting and account-change automation across regional business operations';
  await tick();checks.push(check(doc,'long project title'));title.textContent=originalTitle;
- const originalTheme=doc.documentElement.dataset.theme;
- interactions.focusRing=hasVisibleFocusRing(doc);doc.querySelector('.theme-toggle').click();await tick();
- interactions.theme=doc.documentElement.dataset.theme!==originalTheme;interactions.alternateFocusRing=hasVisibleFocusRing(doc);checks.push(check(doc,'alternate theme'));
- doc.querySelector('.theme-toggle').click();await tick();
+ interactions.focusRing=hasVisibleFocusRing(doc);
+ interactions.themeToggleAbsent=!doc.querySelector('.theme-toggle');
+ interactions.systemTheme=getComputedStyle(doc.documentElement).colorScheme===(win.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
  doc.documentElement.style.fontSize='200%';await tick();checks.push(check(doc,'200% root text'));
  doc.documentElement.style.fontSize='';await tick();
  for(const img of doc.images) img.loading='eager';await Promise.all([...doc.images].map(img=>img.decode().catch(()=>{})));
