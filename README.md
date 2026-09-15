@@ -37,6 +37,6 @@ For GitHub Pages under a repository subpath, build with `pnpm exec vite build --
 
 ## Design and accessibility
 
-Responsive layouts, mobile navigation, semantic sections, a skip link, visible keyboard focus, native case-study disclosures, and reduced-motion support are included. Fonts load from Google Fonts with local fallbacks. No animation or icon library is required. The GitHub link remains unset until a real profile is supplied.
+Responsive layouts, mobile navigation, semantic sections, a skip link, visible keyboard focus, native case-study disclosures, and reduced-motion support are included. The site uses system font stacks and makes no third-party font requests. No animation or icon library is required. The GitHub link remains unset until a real profile is supplied.
 
 Source references: the supplied website brief and https://www.linkedin.com/in/steven-rodriguez-data-analyst (public preview and user screenshots), plus the supplied résumé. The résumé preview and downloads preserve the supplied document’s text, including its existing placeholder bullet.
