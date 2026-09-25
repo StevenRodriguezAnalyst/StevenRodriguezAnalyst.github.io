@@ -89,7 +89,7 @@ function App() {
 <main id="main" tabIndex={-1}>
 <section className="hero">
 <div className="eyebrow">
-<span className="square"/> STEVEN RODRIGUEZ / DATA ANALYST</div>
+<span className="square"/> STEVEN RODRIGUEZ / {p.role.toUpperCase()}</div>
 <h1>I turn complex data<br/>
 <span className="serif">into better decisions.</span>
 </h1>
@@ -112,7 +112,8 @@ function App() {
 <code>
 <b>SELECT</b> name, role<br/>
 <b>FROM</b> portfolio<br/>
-<b>WHERE</b> role = <em>'Data Analyst'</em>;<span className="cursor"/>
+<b>WHERE</b> role <b>IN</b> (<em>'Data Analyst'</em>,<br/>
+&nbsp;&nbsp;<em>'Business Analyst'</em>);<span className="cursor"/>
 </code>
 <div className="query-foot">↳ 1 analyst found <span>1 row returned</span>
 </div>
@@ -149,7 +150,7 @@ function App() {
 </p>
 </div>{p.projects.map(project=>
 <article className="project" key={project.id}>
-<div className={'project-visual '+project.kind} aria-label={project.type + ': ' + project.metric + ' ' + project.metricLabel + (project.kind === 'bars' ? '. Relative processing time: before 100, after 30.' : project.kind === 'cohort' ? '. Coverage: Orange, Riverside, and San Bernardino counties.' : '. Source records, 20+ field mappings, Salesforce CRM.')} role="img">
+<div className={'project-visual '+project.kind} aria-label={`${project.type}: ${project.metric} ${project.metricLabel}. ${project.figureAlt}`} role="img">
 <div className="visual-label">
 <span>{project.type.toUpperCase()}</span>
 <span>FIG. {project.id}</span>
@@ -173,20 +174,13 @@ function App() {
 </div>
 <p>Relative processing time · baseline = 100</p>
 </div>:<div className="pipeline">
+{project.figureSteps.map((step,index)=><React.Fragment key={step}>
 <div>
-<span>01</span>
-<strong>Source records</strong>
+<span>0{index+1}</span>
+<strong>{step}</strong>
 </div>
-<b>↓</b>
-<div>
-<span>02</span>
-<strong>20+ field mappings</strong>
-</div>
-<b>↓</b>
-<div>
-<span>03</span>
-<strong>Salesforce CRM</strong>
-</div>
+{index < project.figureSteps.length-1 && <b aria-hidden="true">↓</b>}
+</React.Fragment>)}
 </div>}<div className="visual-bottom">
 <strong>{project.metric}</strong>
 <span>{project.metricLabel}</span>

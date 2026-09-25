@@ -28,8 +28,9 @@ for(const width of [320,375,390,430,768,1024,1280,1366,1440,1536,1920,2560]){
  const win=frame.contentWindow,doc=frame.contentDocument;
  await doc.fonts.ready;doc.documentElement.style.scrollBehavior='auto';await pause(100);await tick();
  const checks=[check(doc,'closed')];
- doc.querySelectorAll('summary').forEach(e=>e.click());await tick();checks.push(check(doc,'all three case studies expanded'));
- const expanded=doc.querySelectorAll('details[open]').length===3;
+ const caseStudyCount=doc.querySelectorAll('details').length;
+ doc.querySelectorAll('summary').forEach(e=>e.click());await tick();checks.push(check(doc,'all case studies expanded'));
+ const expanded=doc.querySelectorAll('details[open]').length===caseStudyCount;
  doc.querySelectorAll('summary').forEach(e=>e.click());await tick();
  const collapsed=doc.querySelectorAll('details[open]').length===0;
  const menu=doc.querySelector('.menu-toggle');const mobile=getComputedStyle(menu).display!=='none';

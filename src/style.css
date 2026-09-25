@@ -166,7 +166,7 @@ details[open] summary .case-closed { display:none; }
 }
 .accomplishments { padding-left:18px; font-size:1rem; line-height:1.7; color:var(--body-text); }
 .accomplishments li { padding-left:5px; margin-bottom:12px; }
-.skill-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:30px; }
+.skill-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; }
 .skill { min-width:0; border-top:1px solid var(--line); padding-top:22px; }
 .skill>.mono { font-size:0.75rem; color:var(--muted); }
 .skill h3 { font-size:1.25rem; letter-spacing:-.4px; }
