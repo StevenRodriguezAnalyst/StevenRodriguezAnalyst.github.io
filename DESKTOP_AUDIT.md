@@ -1,21 +1,22 @@
 # Desktop experience audit
 
-Scope: the single portfolio route, all six linked sections, header, footer, project figures/disclosures, résumé links, contact actions, themes, and mobile navigation. There are no tables, forms, dialogs, backend loading/error states, or account controls in this site.
+Scope: the portfolio home page and all six linked sections, the Pokémon automation case-study page, the résumé preview, shared header/footer styles, project disclosures, responsive navigation, light/dark system themes, and keyboard states. The site does not contain forms, tables, dialogs, account controls, or backend loading/error states.
 
 ## Findings and changes
 
-- Percentage gutters continued growing after the page reached its maximum width, shrinking usable content on ultrawide displays. Shared content-width and bounded gutter tokens now keep 1,240px of usable space at wide sizes; the header aligns with this same grid.
-- The 100px desktop header and tall hero delayed the introduction and actions. The header is now 80px, with a bounded 260px portrait and tighter hero spacing. At 1440px, hero height drops from about 817px to 679px.
-- Independent percentage project gaps and centered figures made expanded case studies feel disconnected. Shared column gaps and top alignment keep each figure paired with its title and detailed text.
-- Four skill columns were cramped near 1024px. The two-column layout now lasts through 1100px. Reading widths are bounded for project and contact copy; résumé and contact actions resist compression.
-- Desktop header CSS order differed from keyboard order, and navigation had no location indicator. DOM order now follows desktop presentation; scroll-aware aria-current and underlines identify the visible section. Existing focus rings, reduced-motion support, Escape/outside-dismiss behavior, and brand remain intact.
+- The portfolio already used a consistent 1,240px content grid and bounded gutters, so wide screens remained controlled instead of stretching edge to edge.
+- The About section was the main remaining desktop imbalance. Its copy occupied one very long column while the right side of the layout did little work. At 1,180px and above it now uses a structured editorial split: readable biography copy on the left and a compact quote/education rail on the right. Laptop and mobile layouts keep the simpler single-column flow.
+- Project disclosure controls did not visually communicate their open/closed state. Shared summary styling now adds an unobtrusive plus/minus indicator, a stable control width, and a distinct open state while preserving the native keyboard-accessible `details` behavior and accessible control name.
+- Existing strengths were retained: compact sticky navigation, active-section feedback, bounded paragraph widths on project pages, two-column project and experience layouts, intentional horizontal workflow scrolling, responsive résumé preview, visible focus rings, reduced-motion support, and system-theme support.
 
 ## Verification
 
-Browser checks cover 320, 375, 390, 430, 768, 1024, 1280, 1366, 1440, 1536, 1920, and 2560px. The retained tests/mobile-qa.html fixture checks overflow, target size, themes, 200% text, long titles, disclosure expansion/collapse, loaded images, menu dismissal, short mobile viewports, and anchor navigation. Desktop screenshots were captured and reviewed across the requested widths. No forms or modals were invented for testing.
-
-TypeScript and the Vite production build pass. The repository has no lint configuration or lint script; no lint pass is claimed. No dependency was added. The production JavaScript bundle is approximately 75KB gzip.
+- Visually reviewed the live and local site at 1024px, 1280px, 1366px, 1440px, 1536px, and 1920px, plus mobile regression checks.
+- Ran the responsive QA fixture at 320px, 375px, 390px, 430px, 768px, 1024px, 1280px, 1366px, 1440px, 1536px, 1920px, and 2560px.
+- The fixture passed overflow, target size, long-title, all-disclosures-open, mobile-menu, Escape/outside dismissal, active-section, anchor visibility, focus ring, image loading, system-theme, and 200% root text checks.
+- `pnpm run verify` passes the public-asset privacy check, TypeScript compilation, and the Vite production build.
+- No dependency was added. The largest JavaScript chunk remains about 70KB gzip.
 
 ## Future work
 
-A dedicated lint configuration and automated browser test runner in CI would make these checks easier to repeat. Google Fonts remain externally hosted with existing fallbacks and display=swap; self-hosting is an optional future optimization. Content, professional claims, and the existing GitHub coming-soon state were preserved.
+The repository still has no dedicated lint configuration or automated browser runner in CI. Adding those would make the current responsive fixture easier to enforce on every GitHub Pages deployment. The Pokémon case study also relies on a few third-party image hosts; bundling approved local copies later would make that page less dependent on external availability.

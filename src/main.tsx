@@ -126,16 +126,20 @@ function App() {
 </section>
 <section id="about" tabIndex={-1} className="section about">
 <div className="label">01 / ABOUT</div>
-<div>
+<div className="about-content">
+<div className="about-copy">
 <h2>A little about me.</h2>
 <p>{p.bio}</p>
 <p className="muted">I’m interested in how data can solve business problems. Through reporting and automation, I help teams improve efficiency, maintain data accuracy, and make informed decisions. I enjoy connecting with people in analytics, technology, and finance who share that interest.</p>
+</div>
+<aside className="about-aside" aria-label="Personal note and education">
 <blockquote className="about-quote"><p>“In the middle of difficulty lies opportunity.”</p><cite>— Albert Einstein</cite></blockquote>
 <div className="education">
 <span className="mono">EDUCATION</span>
 <strong>{p.education.school}</strong>
 <span>{p.education.dates} <i>·</i> {p.education.distinction}</span>
 </div>
+</aside>
 </div>
 </section>
 <section id="work" tabIndex={-1} className="section work">
@@ -190,7 +194,7 @@ function App() {
 <p>{project.description}</p>
 <div className="tools">{project.tools}</div>
 <details>
-<summary><span className="case-closed">Read case study</span><span className="case-open">Close case study</span>
+<summary><span className="case-closed">Read case study</span><span className="case-open">Close case study</span><span className="case-indicator" aria-hidden="true"/>
 </summary>
 <div className="case-study">
 <h4>The question</h4>
