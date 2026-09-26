@@ -164,7 +164,10 @@ details[open] summary .case-closed { display:none; }
 .experience-logo.rentreporters-logo img { width:280px; }
 @media(prefers-color-scheme:light) {
   .experience-logo img { filter:none; }
-  .experience-logo.target-logo img,.experience-logo.rentreporters-logo img { mix-blend-mode:multiply; }
+  .experience-logo.target-logo img,.experience-logo.rentreporters-logo img {
+    filter:none;
+    mix-blend-mode:normal;
+  }
 }
 .accomplishments { padding-left:18px; font-size:1rem; line-height:1.7; color:var(--body-text); }
 .accomplishments li { padding-left:5px; margin-bottom:12px; }
