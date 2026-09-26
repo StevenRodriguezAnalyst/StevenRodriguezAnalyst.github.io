@@ -166,7 +166,7 @@ details[open] summary .case-closed { display:none; }
   .experience-logo img { filter:none; }
   .experience-logo.target-logo img,.experience-logo.rentreporters-logo img {
     filter:none;
-    mix-blend-mode:normal;
+    mix-blend-mode:multiply;
   }
 }
 .accomplishments { padding-left:18px; font-size:1rem; line-height:1.7; color:var(--body-text); }
