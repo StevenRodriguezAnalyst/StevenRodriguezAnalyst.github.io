@@ -54,12 +54,6 @@ for (const path of await listFiles(publicRoot)) {
   }
 }
 
-const resumeSource = await readFile(join(projectRoot, 'Resume', 'Steven Rodriguez Resume.docx'));
-const resumeDownload = await readFile(join(publicRoot, 'resume.docx'));
-if (!resumeSource.equals(resumeDownload)) {
-  failures.push('public/resume.docx does not match the finalized source résumé');
-}
-
 const resumePreview = await readFile(join(publicRoot, 'resume.html'), 'utf8');
 if (/lorem ipsum/i.test(resumePreview)) {
   failures.push('public/resume.html still contains placeholder text');

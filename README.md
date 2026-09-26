@@ -19,7 +19,7 @@ Projects summarize work documented in the supplied résumé. Update their questi
 
 ## Résumé and contact
 
-The source résumé is `Resume/Steven Rodriguez Resume.docx`. The site serves an exact download copy at `public/resume.docx`; `public/resume.pdf` and `public/resume-preview.webp` are derived previews. `public/resume.html` provides an in-site preview with PDF and Word downloads, avoiding dependence on new-tab PDF viewers. When updating the source, regenerate these preview assets and the accessible transcript in the preview page together. The PDF and image preview are generated from the finalized Word document, which remains unchanged.
+The editable source résumé is retained locally at `Resume/Steven Rodriguez Resume.docx`. The public site serves the metadata-sanitized `public/resume.pdf` and `public/resume-preview.webp` instead of exposing the editable Word file. `public/resume.html` provides an in-site preview with a PDF download, avoiding dependence on new-tab PDF viewers. When updating the source, regenerate these preview assets and the accessible transcript in the preview page together.
 
 Set `resumeAvailable` in the content file to enable the buttons. Set `email` and `github` to enable those contact links. Empty values retain their coming-soon state.
 
