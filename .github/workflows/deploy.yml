@@ -1,4 +1,4 @@
-name: Deploy portfolio to GitHub Pages
+name: Build and deploy portfolio to GitHub Pages
 
 on:
   push:
@@ -7,28 +7,31 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Set up pnpm and Node.js
-        uses: pnpm/setup@v1
+        uses: pnpm/setup@5d160c5bc68a09337ad0d5654e237e03253b5879 # v1
         with:
           runtime: node@22
+          install: false
           cache: true
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Verify and build
         run: pnpm run verify
@@ -41,6 +44,16 @@ jobs:
         with:
           path: ./dist
 
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
