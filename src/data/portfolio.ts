@@ -63,47 +63,37 @@ export const portfolio = {
   ],
   "skills": [
     {
-      "name": "Querying",
+      "name": "Data Analysis",
       "items": [
-        "SQL",
-        "SQL Server",
-        "MySQL",
-        "PostgreSQL"
+        "SQL · Python · Excel · Google Sheets"
       ],
       "verified": true
     },
     {
-      "name": "Analysis",
+      "name": "CRM",
       "items": [
-        "Python · Pandas · NumPy",
-        "Excel · Google Sheets · Power Query · VBA",
-        "Customer & market analysis"
+        "Salesforce · Monday.com"
       ],
       "verified": true
     },
     {
-      "name": "Visualization",
+      "name": "Automation",
       "items": [
-        "Tableau",
-        "Power BI",
-        "Matplotlib"
-      ],
-      "verified": true
-    },
-    {
-      "name": "CRM & workflows",
-      "items": [
-        "Salesforce · Monday.com",
-        "Jitterbit · ETL & data validation",
         "n8n · APIs · MCP"
       ],
       "verified": true
     },
     {
-      "name": "Artificial intelligence",
+      "name": "Business Intelligence",
       "items": [
-        "Claude Code",
-        "Codex"
+        "Tableau · Power BI"
+      ],
+      "verified": true
+    },
+    {
+      "name": "Artificial Intelligence",
+      "items": [
+        "Claude Code · Codex"
       ],
       "verified": true
     },
