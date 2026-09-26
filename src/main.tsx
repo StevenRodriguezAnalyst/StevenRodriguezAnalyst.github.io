@@ -145,9 +145,7 @@ function App() {
 <h2>Some of<br/>my <span className="serif">work.</span>
 </h2>
 </div>
-<p>Reports, account updates, and data cleanup.<br/>
-<span className="sample-note">Selected projects & professional work</span>
-</p>
+<p>Selected projects &amp; professional work</p>
 </div>{p.projects.map(project=>
 <article className="project" key={project.id}>
 <div className={'project-visual '+project.kind} aria-label={`${project.type}: ${project.metric} ${project.metricLabel}. ${project.figureAlt}`} role="img">
@@ -201,9 +199,12 @@ function App() {
 <p>{project.method}</p>
 <h4>The result</h4>
 <p>{project.result}</p>
-<p className="sample-note">Summary based on my résumé. Client data and internal systems are not shared here.</p>
+<p className="sample-note">{project.id === '04'
+  ? 'Personal project built and tested in n8n. Subscriber data is not shared here.'
+  : 'Summary based on my résumé. Client data and internal systems are not shared here.'}</p>
 </div>
 </details>
+{project.id === '04' && <a className="button project-more" href="./pokemon-automation.html">See more</a>}
 </div>
 </article>)}</section>
 <section id="experience" tabIndex={-1} className="section experience">
