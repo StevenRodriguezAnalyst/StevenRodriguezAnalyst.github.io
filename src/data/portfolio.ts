@@ -3,7 +3,7 @@ export const portfolio = {
   "role": "Data Analyst / Business Analyst",
   "location": "Orange County, California",
   "email": "Stevenrodriguez618@gmail.com",
-  "github": "",
+  "github": "https://github.com/StevenRodriguezAnalyst",
   "linkedin": "https://www.linkedin.com/in/steven-rodriguez-data-analyst",
   "resumeAvailable": true,
   "bio": "I’m Steven, a Compliance & Data Analyst at RentReporters, a fintech company helping renters build credit. My experience combines data analytics, compliance operations, CRM systems, and workflow automation. I graduated Cum Laude from CSU Fullerton with a B.A. in Business Administration, concentrating in Marketing and Information Systems.",
