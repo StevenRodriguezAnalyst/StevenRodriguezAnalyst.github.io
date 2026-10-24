@@ -40,3 +40,9 @@ For GitHub Pages under a repository subpath, build with `pnpm exec vite build --
 Responsive layouts, mobile navigation, semantic sections, a skip link, visible keyboard focus, native case-study disclosures, and reduced-motion support are included. The site uses system font stacks and makes no third-party font requests. No animation or icon library is required. The GitHub link points to StevenRodriguezAnalyst’s profile.
 
 Source references: the supplied website brief and finalized résumé, plus the public profile at https://www.linkedin.com/in/steven-rodriguez-data-analyst. The résumé preview and downloads preserve the supplied document’s content.
+
+## Salesforce ETL case study
+
+The first project links to `salesforce-etl.html`, with its detailed content in `src/salesforce-project.tsx`. It shares the Pokémon case study’s layout and light/dark styles. The project describes a deployed workflow processing 1,500 records weekly.
+
+The 25-second walkthrough is featured directly below the case-study introduction. `public/daily-credit-score-upload.mp4` is a metadata-sanitized copy of the supplied video, remuxed for progressive playback with its original video and audio quality preserved. Creation timestamps and source metadata were removed from the container and streams and the output was inspected with FFmpeg. Only format and generic track identifiers remain. `public/credit-score-video-poster.jpg` provides the initial preview. The responsive player uses native controls, inline mobile playback, no autoplay, and metadata-only preloading. When replacing the video, repeat metadata sanitization and inspection before adding it to public assets.

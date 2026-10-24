@@ -197,7 +197,7 @@ details[open] summary .case-closed { display:none; }
 .socials span { color:var(--muted); }
 footer { padding-top:28px; padding-bottom:max(28px,env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:0.75rem; line-height:1.6; color:var(--muted); }
 
-/* Pokémon project detail page */
+/* Project detail pages */
 .project-page header { flex-wrap:nowrap; }
 .project-page .project-page-nav { display:flex; align-items:center; gap:24px; margin-left:auto; }
 .project-page-main { max-width:calc(var(--content-width) + 2 * var(--gutter)); margin:auto; padding:0 max(var(--gutter),env(safe-area-inset-right,0px)) max(72px,env(safe-area-inset-bottom,0px)); }
@@ -429,3 +429,34 @@ footer { padding-top:28px; padding-bottom:max(28px,env(safe-area-inset-bottom,0p
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation:none!important; transition:none!important; }
 }
+
+/* Salesforce ETL case study */
+.etl-flow { list-style:none; padding:0; margin:32px 0 0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border:1px solid var(--line); background:var(--surface); }
+.etl-flow li { padding:22px; min-width:0; }
+.etl-flow li+li { border-left:1px solid var(--line); }
+.etl-flow .mono { display:block; color:var(--muted); font-size:.7rem; line-height:1.6; }
+.etl-flow strong { display:block; margin:14px 0 8px; font-size:1rem; font-weight:550; }
+.etl-flow p { margin:0; font-size:.875rem; }
+.etl-steps { list-style:decimal-leading-zero; margin:0; padding-left:2.5rem; }
+.etl-steps li { padding:24px 0 24px 12px; border-top:1px solid var(--line); }
+.etl-steps li::marker { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--muted); font-size:.875rem; }
+.etl-steps h3 { font-size:1.25rem; margin:0 0 12px; }
+.etl-steps p { margin:0; max-width:68ch; }
+.etl-results { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:30px 0; }
+.etl-results div { background:var(--surface); padding:24px; display:flex; flex-direction:column; gap:12px; }
+.etl-results dt { font-size:.8rem; color:var(--muted); }
+.etl-results dd { font-size:clamp(1.8rem,3vw,2.5rem); margin:0; letter-spacing:-1px; }
+@media(max-width:600px) {
+  .etl-flow { grid-template-columns:minmax(0,1fr); }
+  .etl-flow li+li { border-left:0; border-top:1px solid var(--line); }
+  .etl-results div { padding:18px; }
+}
+
+/* Featured walkthrough, directly beneath the case-study introduction. */
+.project-demo { grid-column:1 / -1; min-width:0; margin:0; }
+.project-demo-heading { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:12px 24px; margin-bottom:18px; }
+.project-demo-heading h2 { font-size:clamp(1.4rem,2.5vw,1.8rem); letter-spacing:-.7px; margin:0; }
+.project-demo-heading .mono { color:var(--muted); font-size:.75rem; }
+.project-demo video { display:block; width:100%; height:auto; aspect-ratio:16 / 9; background:var(--surface); border:1px solid var(--line); border-radius:3px; }
+.project-demo video:focus-visible { outline:2px solid var(--focus-ring); outline-offset:4px; }
+.project-demo figcaption { color:var(--muted); font-size:.875rem; line-height:1.6; margin-top:14px; }

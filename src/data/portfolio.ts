@@ -108,6 +108,26 @@ export const portfolio = {
   "projects": [
     {
       "id": "01",
+      "title": "Daily credit score automation.",
+      "type": "Data processing",
+      "tools": "n8n · Salesforce · ETL · Slack",
+      "description": "Built and deployed an automated n8n ETL workflow replacing a manual credit score load, mapping TransUnion files into Salesforce through batched upserts and processing 1,500 records weekly with automated error reporting and Slack alerts.",
+      "question": "How could we automate the daily credit score load and make failed rows easier to catch?",
+      "method": "I connected Google Drive, n8n, and Salesforce to validate incoming files, clean and deduplicate records, and send updates in batches of 200. Rejected and skipped rows are saved to Drive, with a summary posted to Slack.",
+      "result": "The deployed workflow processes 1,500 records weekly, replacing the manual credit score load with automated Salesforce updates, error reporting, and Slack alerts.",
+      "metric": "1,500",
+      "metricLabel": "Records processed weekly",
+      "kind": "pipeline",
+      "figureAlt": "Daily TransUnion files arrive in Google Drive, n8n validates the data, and Salesforce updates are reported through Drive and Slack.",
+      "figureSteps": [
+        "TransUnion file in Drive",
+        "n8n validation + cleanup",
+        "Salesforce + Slack summary"
+      ],
+      "detailUrl": "./salesforce-etl.html"
+    },
+    {
+      "id": "02",
       "title": "Geographic client & market analysis.",
       "type": "Client & market analysis",
       "tools": "Excel · Power Query · PivotTables",
@@ -122,7 +142,7 @@ export const portfolio = {
       "figureSteps": []
     },
     {
-      "id": "02",
+      "id": "03",
       "title": "Salesforce account-change automation.",
       "type": "Workflow automation",
       "tools": "Salesforce · Claude Code · APIs",
@@ -137,27 +157,9 @@ export const portfolio = {
       "figureSteps": []
     },
     {
-      "id": "03",
-      "title": "Salesforce ETL & data validation.",
-      "type": "Data processing",
-      "tools": "Salesforce · ETL · Consumer Credit",
-      "description": "Designed a Jitterbit ETL pipeline with field mappings and transformation logic to improve Salesforce data accuracy and customer credit score reporting.",
-      "question": "How could we move customer records into Salesforce every day with fewer data errors?",
-      "method": "I built and maintained a Jitterbit pipeline that runs daily, with rules to match and transform more than 20 fields before sending records to Salesforce.",
-      "result": "The daily pipeline processes 1,000+ records per week and improves customer credit score reporting accuracy.",
-      "metric": "1,000+",
-      "metricLabel": "Records per week · Runs daily",
-      "kind": "pipeline",
-      "figureAlt": "Source records pass through 20+ field mappings before reaching Salesforce CRM.",
-      "figureSteps": [
-        "Source records",
-        "20+ field mappings",
-        "Salesforce CRM"
-      ]
-    },
-    {
       "id": "04",
       "title": "Pokémon of the Day email.",
+      "detailUrl": "./pokemon-automation.html",
       "type": "Personal n8n automation",
       "tools": "n8n · API · Codex",
       "description": "Built a scheduled n8n workflow that turns live PokéAPI data into a polished daily Pokédex email and delivers it to an active subscriber list.",

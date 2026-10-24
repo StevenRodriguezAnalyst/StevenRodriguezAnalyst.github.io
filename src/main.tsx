@@ -208,7 +208,7 @@ function App() {
   : 'Summary based on my résumé. Client data and internal systems are not shared here.'}</p>
 </div>
 </details>
-{project.id === '04' && <a className="button project-more" href="./pokemon-automation.html">See more</a>}
+{'detailUrl' in project && <a className="button project-more" href={project.detailUrl}>See more</a>}
 </div>
 </article>)}</section>
 <section id="experience" tabIndex={-1} className="section experience">

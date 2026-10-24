@@ -6,6 +6,7 @@ export default defineConfig({
       input: {
         portfolio: 'index.html',
         pokemonAutomation: 'pokemon-automation.html',
+        salesforceEtl: 'salesforce-etl.html',
       },
     },
   },
