@@ -156,7 +156,7 @@ function ProjectPage() {
       <section className="project-page-hero">
         <div>
           <div className="eyebrow"><span className="square"/> PERSONAL N8N AUTOMATION / CASE STUDY</div>
-          <h1>Pokémon of the Day<br/><span className="serif">email.</span></h1>
+          <h1>Pokémon of the Day<br/><span className="muted">email.</span></h1>
           <p className="lead">A personal automation project that turns live Pokémon data into a polished daily email for subscribed friends.</p>
         </div>
         <div className="project-page-meta">

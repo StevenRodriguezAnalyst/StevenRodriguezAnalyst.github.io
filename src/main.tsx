@@ -269,7 +269,7 @@ function App() {
 </a>
 </div>
 <div className="socials">
-<a href={p.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>{p.github?<a href={p.github} target="_blank" rel="noreferrer">GitHub</a>:<span>GitHub · coming soon</span>}{!p.email&&<span>Email · coming soon</span>}</div>
+<a href={p.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>{p.github?<a href={p.github} target="_blank" rel="noreferrer">GitHub</a>:<span>GitHub · coming soon</span>}<a href={p.handshake} target="_blank" rel="noreferrer">Handshake</a>{!p.email&&<span>Email · coming soon</span>}</div>
 </section>
 </main>
 <footer>© {new Date().getFullYear()} Steven Rodriguez <span className="mono">0 errors · 1 analyst found</span>
