@@ -19,7 +19,7 @@ Projects summarize work documented in the supplied résumé. Update their questi
 
 ## Résumé and contact
 
-The editable source résumé is retained locally at `Resume/Steven Rodriguez Resume.docx`. The public site serves the metadata-sanitized `public/resume.pdf` and `public/resume-preview.webp` instead of exposing the editable Word file. `public/resume.html` provides an in-site preview with a PDF download, avoiding dependence on new-tab PDF viewers. When updating the source, regenerate these preview assets and the accessible transcript in the preview page together.
+The editable source résumé is retained locally at `Resume/Steven Rodriguez Resume.docx`. The public site serves the metadata-sanitized `public/Steven Rodriguez Resume.pdf` and `public/resume-preview.webp` instead of exposing the editable Word file. `public/resume.html` provides an in-site preview with a PDF download, avoiding dependence on new-tab PDF viewers. When updating the source, regenerate these preview assets and the accessible transcript in the preview page together.
 
 Set `resumeAvailable` in the content file to enable the buttons. Set `email` and `github` to enable those contact links. Empty values retain their coming-soon state.
 
@@ -43,6 +43,6 @@ Source references: the supplied website brief and finalized résumé, plus the p
 
 ## Salesforce ETL case study
 
-The first project links to `salesforce-etl.html`, with its detailed content in `src/salesforce-project.tsx`. It shares the Pokémon case study’s layout and light/dark styles. The project describes a deployed workflow processing 1,500 records weekly.
+The first project links to `salesforce-etl.html`, with its detailed content in `src/salesforce-project.tsx`. It shares the Pokémon case study’s layout and light/dark styles. The project describes a deployed workflow processing up to 3,300 records daily.
 
 The 25-second walkthrough is featured directly below the case-study introduction. `public/daily-credit-score-upload.mp4` is a metadata-sanitized copy of the supplied video, remuxed for progressive playback with its original video and audio quality preserved. Creation timestamps and source metadata were removed from the container and streams and the output was inspected with FFmpeg. Only format and generic track identifiers remain. `public/credit-score-video-poster.jpg` provides the initial preview. The responsive player uses native controls, inline mobile playback, no autoplay, and metadata-only preloading. When replacing the video, repeat metadata sanitization and inspection before adding it to public assets.

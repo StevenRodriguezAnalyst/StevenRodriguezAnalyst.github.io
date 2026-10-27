@@ -250,7 +250,7 @@ function App() {
 </div>
 <div>{p.resumeAvailable?<div className="actions">
 <a className="button dark" href="./resume.html">View résumé</a>
-<a className="button" href="./resume.pdf" download="Steven Rodriguez Resume.pdf">Download PDF</a>
+<a className="button" href="./Steven%20Rodriguez%20Resume.pdf" download="Steven Rodriguez Resume.pdf">Download PDF</a>
 </div>:<>
 <div className="actions">
 <button className="button" disabled>View résumé</button>

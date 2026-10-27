@@ -95,9 +95,9 @@ function ProjectPage() {
         <div className="label">04 / THE RESULT</div>
         <div className="project-detail-copy">
           <h2 id="results-heading">Daily updates. Visible outcomes.</h2>
-          <p>The deployed workflow processes 1,500 records weekly, replacing a manual credit score load with automated Salesforce updates, error reporting, and Slack alerts.</p>
+          <p>The deployed workflow processes up to 3,300 records daily, replacing a manual credit score load with automated Salesforce updates, error reporting, and Slack alerts.</p>
           <dl className="etl-results">
-            <div><dt>Records processed weekly</dt><dd>1,500</dd></div>
+            <div><dt>Records processed daily</dt><dd>Up to 3,300</dd></div>
             <div><dt>Load schedule</dt><dd>Daily</dd></div>
           </dl>
           <p>The load now runs automatically after a file upload, and the team can see the outcome in Slack without opening a results file. Rejected and skipped rows stay available in Drive for review.</p>

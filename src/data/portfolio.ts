@@ -18,12 +18,13 @@ export const portfolio = {
       "location": "Newport Beach, CA",
       "role": "Compliance & Data Analyst",
       "dates": "April 2026 — Present",
-      "description": "I build data and automation workflows across operations, compliance, fraud prevention, and credit reporting while auditing customer account data for accuracy and FCRA compliance.",
+      "description": "I analyze customer account and credit reporting data to identify trends and improve accuracy, while building automation workflows across operations, compliance, and fraud prevention.",
       "accomplishments": [
         "Built and deployed 10+ n8n automations that handle 500+ monthly tasks and reduce manual processing time by 60%.",
         "Built an AI-driven Salesforce workflow that automates 200+ account-change requests a month, cutting processing time by 70% while enforcing fraud and security controls.",
-        "Designed and maintained a Jitterbit ETL pipeline that processes 1,000+ records a week using 20+ field mappings and transformation rules.",
-        "Resolved 100+ consumer disputes a month with a 100% on-time resolution rate."
+        "Designed and maintained an n8n ETL pipeline that cleans and validates TransUnion files and upserts up to 3,300 records daily into Salesforce, cutting data errors in half.",
+        "Resolved 100+ consumer disputes a month with a 100% on-time resolution rate.",
+        "Analyzed 250+ Salesforce records and credit bureau tradelines monthly, helping reduce repeat discrepancies by 25% across three major credit bureaus."
       ],
       "tools": "n8n · APIs · Salesforce · Sheets · ETL",
       "logo": "./rentreporters-data-team-small.jpg",
@@ -39,7 +40,7 @@ export const portfolio = {
         "Conducted market research across 5+ databases, identifying sales opportunities that saved clients $2,000+ per report.",
         "Built Tableau dashboards from 1,000+ marketing and survey data points, identifying trends that improved outreach and engagement by 15%.",
         "Entered, cleaned, and analyzed 1,000+ CRM records, improving data accuracy by 25%.",
-        "Transformed, standardized, and validated 1,000+ rows of Excel data to support business decisions."
+        "Transformed, standardized, and validated 1,500+ rows of Excel data to support business decisions."
       ],
       "tools": "Excel · Tableau · CRM · Market research",
       "logo": "./sbdc-intel.png",
@@ -111,12 +112,12 @@ export const portfolio = {
       "title": "Daily credit score automation.",
       "type": "Data processing",
       "tools": "n8n · Salesforce · ETL · Slack",
-      "description": "Built and deployed an automated n8n ETL workflow replacing a manual credit score load, mapping TransUnion files into Salesforce through batched upserts and processing 1,500 records weekly with automated error reporting and Slack alerts.",
+      "description": "Built and deployed an automated n8n ETL workflow replacing a manual credit score load, mapping TransUnion files into Salesforce through batched upserts and processing up to 3,300 records daily with automated error reporting and Slack alerts.",
       "question": "How could we automate the daily credit score load and make failed rows easier to catch?",
       "method": "I connected Google Drive, n8n, and Salesforce to validate incoming files, clean and deduplicate records, and send updates in batches of 200. Rejected and skipped rows are saved to Drive, with a summary posted to Slack.",
-      "result": "The deployed workflow processes 1,500 records weekly, replacing the manual credit score load with automated Salesforce updates, error reporting, and Slack alerts.",
-      "metric": "1,500",
-      "metricLabel": "Records processed weekly",
+      "result": "The deployed workflow processes up to 3,300 records daily, replacing the manual credit score load with automated Salesforce updates, error reporting, and Slack alerts.",
+      "metric": "Up to 3,300",
+      "metricLabel": "Records processed daily",
       "kind": "pipeline",
       "figureAlt": "Daily TransUnion files arrive in Google Drive, n8n validates the data, and Salesforce updates are reported through Drive and Slack.",
       "figureSteps": [
