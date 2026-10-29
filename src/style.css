@@ -460,3 +460,8 @@ footer { padding-top:28px; padding-bottom:max(28px,env(safe-area-inset-bottom,0p
 .project-demo video { display:block; width:100%; height:auto; aspect-ratio:16 / 9; background:var(--surface); border:1px solid var(--line); border-radius:3px; }
 .project-demo video:focus-visible { outline:2px solid var(--focus-ring); outline-offset:4px; }
 .project-demo figcaption { color:var(--muted); font-size:.875rem; line-height:1.6; margin-top:14px; }
+
+/* Fit each frame to the walkthrough’s natural proportions. */
+.project-video { min-width:0; overflow:hidden; background:var(--surface); border:1px solid var(--line); border-radius:3px; }
+.project-video video { display:block; width:100%; height:auto; }
+.project-video video:focus-visible { outline:2px solid var(--focus-ring); outline-offset:-3px; }

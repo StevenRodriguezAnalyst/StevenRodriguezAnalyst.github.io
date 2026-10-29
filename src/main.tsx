@@ -3,6 +3,40 @@ import {createRoot} from 'react-dom/client';
 import {portfolio as p} from './data/portfolio';
 import './style.css';
 
+function ProjectVideo({creditScore}: {creditScore: boolean}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!creditScore || !video) return;
+    let visible = false;
+    const syncPlayback = () => {
+      if (visible && !document.hidden) {
+        void video.play().catch(() => { /* Playback controls remain available if autoplay is blocked. */ });
+      } else video.pause();
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+      syncPlayback();
+    }, {threshold: [0, 0.35]});
+    observer.observe(video);
+    document.addEventListener('visibilitychange', syncPlayback);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', syncPlayback);
+      video.pause();
+    };
+  }, [creditScore]);
+  const src = creditScore ? './daily-credit-score-upload.mp4' : './geographic-client-market-analysis.mp4';
+  return <div className={`project-video ${creditScore ? 'credit-score-video' : 'geographic-video'}`}>
+    <video ref={videoRef} controls playsInline muted={creditScore} preload="metadata"
+      poster={creditScore ? './credit-score-video-poster.jpg' : undefined}
+      aria-label={creditScore ? 'Daily credit score automation walkthrough' : 'Geographic client and market analysis walkthrough'}>
+      <source src={src} type="video/mp4"/>
+      Your browser does not support embedded video. <a href={src}>Download the walkthrough</a>.
+    </video>
+  </div>;
+}
+
 function App() {
   const [menu, setMenu] = useState(false);
   const [activeSection, setActiveSection] = useState("main");
@@ -152,7 +186,7 @@ function App() {
 <p>Selected projects &amp; professional work</p>
 </div>{p.projects.map(project=>
 <article className="project" key={project.id}>
-<div className={'project-visual '+project.kind} aria-label={`${project.type}: ${project.metric} ${project.metricLabel}. ${project.figureAlt}`} role="img">
+{project.id === '01' || project.id === '02' ? <ProjectVideo creditScore={project.id === '01'}/> : <div className={'project-visual '+project.kind} aria-label={`${project.type}: ${project.metric} ${project.metricLabel}. ${project.figureAlt}`} role="img">
 <div className="visual-label">
 <span>{project.type.toUpperCase()}</span>
 <span>FIG. {project.id}</span>
@@ -187,7 +221,7 @@ function App() {
 <strong>{project.metric}</strong>
 <span>{project.metricLabel}</span>
 </div>
-</div>
+</div>}
 <div className="project-copy">
 <span className="mono project-number">{project.id} / {project.type.toUpperCase()}</span>
 <h3>{project.title}</h3>
