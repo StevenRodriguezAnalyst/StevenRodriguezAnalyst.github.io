@@ -141,7 +141,8 @@ export const portfolio = {
       "metricLabel": "Client records analyzed · April 2026",
       "kind": "cohort",
       "figureAlt": "Coverage spans Orange, Riverside, and San Bernardino counties.",
-      "figureSteps": []
+      "figureSteps": [],
+      "detailUrl": "./geographic-market-analysis.html"
     },
     {
       "id": "03",

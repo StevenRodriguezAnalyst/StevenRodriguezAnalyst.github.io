@@ -7,6 +7,7 @@ export default defineConfig({
         portfolio: 'index.html',
         pokemonAutomation: 'pokemon-automation.html',
         salesforceEtl: 'salesforce-etl.html',
+        geographicMarketAnalysis: 'geographic-market-analysis.html',
       },
     },
   },
